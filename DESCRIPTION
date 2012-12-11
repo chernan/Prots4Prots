@@ -1,0 +1,9 @@
+Package: Prots4Prots
+Title: Protocols for Proteomics
+Version: 0.0.1
+Author: Celine Hernandez
+Description: A package comparing different statistical tools in order to find differentially expressed proteins. The R folder contains the toolbox, tools brought together by topic. The inst folder contains use cases of the toolbox.
+Maintainer: Celine Hernandez <Celine.Hernandez@unil.ch>
+License: 
+Depends: R (>= 2.15)
+Packaged: 

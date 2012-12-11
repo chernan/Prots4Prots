@@ -1,0 +1,6 @@
+# List of ignored files
+.Rproj.user  # Rstudio, user data
+.Rhistory  # Rstudio, history of executed R command lines
+.RData  # Current data in the workspace
+.Rbuildignore  # Rstudio, to be ignored during build
+*.Rproj  # Rstudio, project data
