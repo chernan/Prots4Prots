@@ -1,5 +1,5 @@
 
-test_rAdjustBH <- function() {
+test_fun_rAdjustBH <- function() {
     
     ## Bsaic tests
     checkEquals(rAdjustBH(c()), numeric(0))
@@ -15,7 +15,7 @@ test_rAdjustBH <- function() {
     )
 }
 
-test_lpeAdjustBH <- function() {
+test_fun_lpeAdjustBH <- function() {
     ## Setup data (based on a LPE example)
     data(Ley)
     Ley[,2:7] <- preprocess(Ley[,2:7],data.type="MAS5")
@@ -31,7 +31,7 @@ test_lpeAdjustBH <- function() {
     )
 }
 
-test_applyAndReportBH <- function() {
+test_fun_applyAndReportBH <- function() {
 
     ## Setup data
     set.seed(0)

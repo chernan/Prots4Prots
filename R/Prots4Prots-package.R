@@ -68,7 +68,7 @@
 #' SAM method uses bootstraping.
 #' 
 #' Other categories for utilities functions:
-#' Generation of reports (RPT)
+#' Generation of reports (REP)
 #'
 #' @docType package
 #' @name Prots4Prots 

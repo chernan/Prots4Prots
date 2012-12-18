@@ -100,12 +100,12 @@ applyAndReportBH <- function(matrixData, outputFolderTemp, outputFile,
     
     cat('',        
         '>',
-        '> Benjamini-Hochberg correction : published in "Controlling the false ',
-        '> discovery rate: a practical and powerful approach to multiple testing"',
-        '> by Yoav Benjamini& Yosef Hochberg (1995)',
+        '> Citation :',
+        '> "Controlling the false discovery rate: a practical and powerful approach to multiple testing"',
+        '> Yoav Benjamini & Yosef Hochberg (1995)',
         '>',
         '',
-        '---------------------------------------------------------------------------',
+        '---------------------------------------------------------------------',
         '',
         sep="\n")        
     sink(file=NULL)

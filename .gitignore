@@ -4,3 +4,5 @@
 .RData
 .Rbuildignore
 *.Rproj
+temp
+Read-and-delete-me
