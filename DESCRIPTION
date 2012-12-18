@@ -6,4 +6,5 @@ Description: A package comparing different statistical tools in order to find di
 Maintainer: Celine Hernandez <Celine.Hernandez@unil.ch>
 License: 
 Depends: R (>= 2.15), knitr
+Suggests: RUnit, BiocGenerics
 Packaged: 
