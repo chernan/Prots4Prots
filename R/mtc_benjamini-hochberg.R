@@ -13,7 +13,7 @@
 #' approach to multiple testing" by Yoav Benjamini & Yosef Hochberg (1995)
 
 
-
+library("LPE")
 
 #' @title Wrapper to R Base p.adjust()
 #' 
@@ -43,7 +43,7 @@ rAdjustBH <- function(pValues) {
 #' @param lpeVal A lpe object, output of a Local-Pooled-error method
 #' @return a table of thresholds for a set of pre-defined FDR values
 lpeAdjustBH <- function(lpeVal) {
-    require("LPE")
+
     
     fdrBH <- fdr.adjust(lpeVal, adjp="BH")
     
