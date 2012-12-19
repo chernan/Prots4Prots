@@ -38,7 +38,7 @@ applyMultipleTestingCorrection <- function(mtcMethod,
         stop(
             paste0(
                 c(
-                    "Unknown method in applyMultipleTestingCorrection call: \'", 
+                    "Unknown method in applyMultipleTestingCorrection call : \'", 
                     mtcMethod,
                     "\'."
                 ), 
