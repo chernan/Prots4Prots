@@ -5,7 +5,7 @@
 #' The Benjamini-Hochberg procedure controls the false discovery rate, the 
 #' expected proportion of false discoveries amongst the positive discoveries 
 #' (rejected null hypotheses). This procedure, as well as the Benjamini-
-#' Yekutieli, are less stringent than the family-wise error rate, making them 
+#' Yekutieli, is less stringent than the family-wise error rate, making it 
 #' more powerful than other multiple testing correction approaches. 
 #' 
 #' @references http://en.wikipedia.org/wiki/False_discovery_rate#Controlling_procedures
@@ -61,8 +61,10 @@ lpeAdjustBH <- function(lpeVal) {
 #' @param matrixData Any data.frame containing a column entitled "p.values".  
 #'   This column should contain the p-values to be adjusted.
 #'   Other columns should include "fold.change", can include "significant".
-#' @param outputFolderTemp Temporary folder to store data generated at this step of the analysis.
-#' @param outputFile Report of current analysis step will be appended to this Rmd file.
+#' @param outputFolderTemp Temporary folder to store data generated at this 
+#'   step of the analysis.
+#' @param outputFile Report of current analysis step will be appended to 
+#'   this Rmd file.
 #' @param thresholdPVal Chosen False Discovery rate value.
 #' @return a data frame with data in matrixData (p.values, fold.change, 
 #'   significant) and the corrected p-values.
@@ -87,16 +89,16 @@ applyAndReportBH <- function(matrixData, outputFolderTemp, outputFile,
     matrixData3 <- matrixData2[order(as.numeric(row.names(matrixData2))), ]
     matrixData3 <- data.frame(matrixData3, row.names=row.names(matrixData))
     
-    sink(outputFile, append=TRUE)
     cat('',
         'Significantly different proteins (with multiple testing correction)',
         '---------------------------------------------------------------------',
         '',
         'Benjamini-Hochberg method was chosen for multiple testing correction.',
         '',
-        sep="\n")
+        sep="\n", file=outputFile, append=TRUE)
 
-    allTestsCorrectedRmd(matrixData3, thresholdPVal, outputFolderTemp)
+    allTestsCorrectedRmd(matrixData3, thresholdPVal, 
+                         outputFile, outputFolderTemp)
     
     cat('',        
         '>',
@@ -107,8 +109,7 @@ applyAndReportBH <- function(matrixData, outputFolderTemp, outputFile,
         '',
         '---------------------------------------------------------------------',
         '',
-        sep="\n")        
-    sink(file=NULL)
+        sep="\n", file=outputFile, append=TRUE)        
     
     return(matrixData3)
 }

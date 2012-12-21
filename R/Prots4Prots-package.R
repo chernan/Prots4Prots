@@ -69,6 +69,12 @@
 #' 
 #' Other categories for utilities functions:
 #' Generation of reports (REP)
+#' 
+#' Additional notice :
+#' This package tries to be compliant with the Bioconductor coding guidelines.
+#' http://wiki.fhcrc.org/bioc/Coding_Standards
+#' Runit tests are also available.
+#' http://www.bioconductor.org/developers/unitTesting-guidelines/
 #'
 #' @docType package
 #' @name Prots4Prots 

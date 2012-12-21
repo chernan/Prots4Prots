@@ -14,6 +14,7 @@ test_rep_allTestsCorrectedRmd <- function() {
     ## Run function... as test?
     allTestsCorrectedRmd(matrixData, 
                          0.05,
+                         stdout(),
                          file.path(getwd(), 'temp')
     )
 }
@@ -33,6 +34,7 @@ test_gra_displayCorrectedVolcanoPlot <- function() {
     
     ## Run function... as test?
     displayCorrectedVolcanoPlot(matrixData, 0.05)
-    displayCorrectedVolcanoPlot(matrixData, 0.05, title="test_displayCorrectedVolcanoPlot")
+    displayCorrectedVolcanoPlot(matrixData, 0.05, 
+                                title="test_displayCorrectedVolcanoPlot")
     
 }

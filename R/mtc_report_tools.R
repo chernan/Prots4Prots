@@ -14,7 +14,8 @@
 #'  "p.values", "p.values.corrected" and "fold.change")
 #' @param thresholdPVal Threshold to be used for significant p-values
 #' @param outFolder Where the temporary file will be saved
-allTestsCorrectedRmd <- function(matrixData, thresholdPVal, outFolder) {
+allTestsCorrectedRmd <- function(matrixData, thresholdPVal, 
+                                 outputFile, outFolder) {
     
     ## Write data in a file usable later when the report will be transformed 
     ## into HTML
@@ -25,16 +26,19 @@ allTestsCorrectedRmd <- function(matrixData, thresholdPVal, outFolder) {
         collapse='')
     write.table(matrixData, tempOutput, sep="\t") 
     
+    
     ## Write report text
     cat('',
         '```{r, echo=FALSE, fig.width=14, fig.height=10}',
         '',
-        sep="\n")
+        sep="\n", file=outputFile, append=TRUE)
     
-    cat('displayCorrectedVolcanoPlot <- ')
-    print(displayCorrectedVolcanoPlot)
+    cat('displayCorrectedVolcanoPlot <- ', file=outputFile, append=TRUE)
+#     print(displayCorrectedVolcanoPlot)
+    cat(paste(deparse(displaySignificanceVolcanoPlot), collapse="\n"),
+        file=outputFile, append=TRUE)
     
-    cat( 
+    cat('',
         paste(c('matrixData <- read.table("', 
                 tempOutput, 
                 '", stringsAsFactors=FALSE)'), 
@@ -51,6 +55,7 @@ allTestsCorrectedRmd <- function(matrixData, thresholdPVal, outFolder) {
                 "protein groups had a p-value inferior to ", 
                 thresholdPVal, "."), 
               collapse=''),
+        '',
         paste(c("After correction of the p-values for multiple-testing, ",
                 "<b>`r length(which(as.numeric(matrixData[,\"p.values.corrected\"]) < ", 
                 thresholdPVal, "))`</b> ",
@@ -59,7 +64,7 @@ allTestsCorrectedRmd <- function(matrixData, thresholdPVal, outFolder) {
                 "with an FDR of ", 
                 thresholdPVal, "."), 
               collapse=''),
-        sep="\n"
+        sep="\n", file=outputFile, append=TRUE
     )
     
 }
@@ -79,7 +84,8 @@ allTestsCorrectedRmd <- function(matrixData, thresholdPVal, outFolder) {
 #'  "p.values", "p.values.corrected" and "fold.change")
 #' @param thresholdPVal Threshold to be used for significant p-values
 #' @param title (optional) A title for the plot
-displayCorrectedVolcanoPlot <- function(matrixData, thresholdPVal, title="Volcano plot") {
+displayCorrectedVolcanoPlot <- function(matrixData, thresholdPVal, 
+                                        title="Volcano plot") {
     
     pVals <- matrixData[, "p.values"]
     pValsCorrected <- as.numeric(matrixData[, "p.values.corrected"])
