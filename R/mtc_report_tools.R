@@ -35,7 +35,7 @@ allTestsCorrectedRmd <- function(matrixData, thresholdPVal,
     
     cat('displayCorrectedVolcanoPlot <- ', file=outputFile, append=TRUE)
 #     print(displayCorrectedVolcanoPlot)
-    cat(paste(deparse(displaySignificanceVolcanoPlot), collapse="\n"),
+    cat(paste(deparse(displayCorrectedVolcanoPlot), collapse="\n"),
         file=outputFile, append=TRUE)
     
     cat('',

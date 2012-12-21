@@ -50,3 +50,21 @@ test_fun_applyAndReportBH <- function() {
         p.adjust(p, "BH")
     )
 }
+
+test_rep_applyAndReportBH <- function() {
+    
+    ## Setup data
+    set.seed(0)
+    x <- rnorm(50, mean=c(rep(0,25),rep(3,25)))
+    p <- 2*pnorm( sort(-abs(x)))
+    matrixData <- data.frame(
+        p.values = p,
+        fold.change = rnorm(50, mean=0, sd=1)
+    )
+    
+    ## Test
+    applyAndReportBH(matrixData, 
+                     file.path(getwd(), 'temp'), 
+                     stdout(), 
+                     0.05)
+}

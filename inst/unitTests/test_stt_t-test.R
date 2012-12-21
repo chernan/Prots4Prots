@@ -94,6 +94,22 @@ test_fun_applyAndReportTTests <- function() {
     
 }
 
+test_rep_applyAndReportTTests <- function() {
+    
+    ## Setup data
+    set.seed(0)
+    normalData1 <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
+    normalData2 <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
+    
+    ## Test
+    applyAndReportTTests(
+        normalData1, normalData2, 
+        file.path(getwd(), 'temp'),
+        stdout(), 
+        0.05)
+    
+}
+
 test_rep_reportTTest <- function() {
     
     set.seed(0)
