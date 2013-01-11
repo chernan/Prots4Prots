@@ -10,7 +10,7 @@
 #' 
 #' A two-sample t-test can be unpaired or paired.
 #' A comparison between paired samples has greater power, because of a similar 
-#' noise factor.
+#' noise factor in paired samples.
 #' 
 #' Assumptions
 #' 
