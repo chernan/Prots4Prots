@@ -4,6 +4,22 @@
 #' deviation.
 #' This test has low statistical power when applied to small sample size.
 #' 
+#' "The t-test is certainly the most popular test and has been matter of 
+#' discussion. Computing a t-statistic can be problematic because the variance 
+#' estimates can be skewed by genes having a very low variance. These genes 
+#' are associated to a large t-statistic and falsely selected as differentially 
+#' expressed. 
+#' Another drawback comes from its application on small sample sizes which 
+#' implies low statistical power.
+#' Consequently, the efficacy of a t-test along with the importance of variance 
+#' modeling have been seriously called into question."
+#'  Should We Abandon the t-Test in the Analysis of Gene Expression Microarray 
+#'  Data: A Comparison of Variance Modeling Strategies
+#'  Marine Jeanmougin, Aurelien de Reynies, Laetitia Marisa, Caroline Paccard, 
+#'  Gregory Nuel, Mickael Guedj
+#'  http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0012336
+#'  PLOS one 
+#' 
 #' Student's t-test relies on certain assumptions. Welch's t-test can be used 
 #' as an alternative (see paragraph : 2/ 'Homoscedasticity, or equality of 
 #' variance between samples')
@@ -38,8 +54,8 @@
 #' significant or not.
 #' - Bartlett : If the distributions are nearly normal, otherwise it may just be 
 #'   testing for non-normality (being sensitive to departures from normality).
-#' - Levene : If samples are small, or data are not normal (or you don’t know). 
-#'   Relies on the mean.
+#' - Levene : If samples are small (true!?), or data are not normal (or you 
+#'   don’t know). Relies on the mean.
 #' - Brown–Forsythe : Non-parametric alternative to the Levene test, relies on 
 #'   either the median or the trimmed mean. To be used in case of strong 
 #'   evidence of departure from normality (after a Q-Q plot, for instance).
@@ -47,6 +63,8 @@
 #'   normality.
 #' - Q-Q plot : For a graphical assessment, but preferably if samples are nor 
 #'   small.
+#' 
+#' PS: Erceg-Hurn (2008) for sensitivity of Levene's test to small sample size.
 #' 
 #' 3/ Independence
 #' 
@@ -57,6 +75,12 @@
 #' NB: use of the t-test requires no citation. But it should be mentionned 
 #' whether Student's or Welch's test was used.
 #' 
+#' Modern robust statistical methods: an easy way to maximize the accuracy and 
+#' power of your research. 
+#' Erceg-Hurn, D. M., & Mirosevich, V. M. (2008). 
+#' The American psychologist, 63(7), 591–601. 
+#' doi:10.1037/0003-066X.63.7.591
+
 #' @seealso http://en.wikipedia.org/wiki/Student%27s_t-test
 
 
@@ -194,17 +218,17 @@ applyAndReportTTests <- function(experiment, control, outputFolderTemp,
     return(matrixData)
 }
 
-#' @title Apply multiple Welch's t-tests and report result
+#' @title Report result of multiple Welch's t-tests
 #' 
-#' @description Apply Welch's t-tests between rows of two datasets
+#' @description Report result of multiple Welch's t-tests
 #' 
 #' @details 
-#' Apply Welch's t-tests between rows of two datasets. 
+#' Report Welch's t-tests between rows of two datasets. 
 #' 
-#' @param outputFile Report of current analysis step will be appended to 
-#'  this Rmd file.
 #' @param matrixData A data frame with two columns "p.values" "fold.change"
 #' @param thresholdPVal Maximum threshold for the p-values (e.g 0.05)
+#' @param outputFile Report of current analysis step will be appended to 
+#'  this Rmd file.
 #' @param outputFolderTemp Temporary folder to store data generated at this 
 #'  step of the analysis.
 #' @param isHomoscedastic deprecated FALSE, Welch's test was performed
