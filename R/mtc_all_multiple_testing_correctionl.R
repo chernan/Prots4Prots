@@ -1,17 +1,25 @@
+#' Multiple testing correction
+#' 
+#' When testing multiple times a null hypothesis, incorrect rejection is more 
+#' likely to occur when considering all tests together. Several methods have 
+#' been developped in order to correct this problem and maintain FDR to an 
+#' acceptable level.
+#' 
+#' @seealso http://en.wikipedia.org/wiki/Multiple_comparisons
+#' 
 sapply(
-    list.files(file.path(getwd(), 'R'), pattern="mtc_[^a][^l]{2}.+\\.R", full.names=TRUE),
+    list.files(file.path(getwd(), 'R'), 
+               pattern="mtc_[^a][^l]{2}.+\\.R", 
+               full.names=TRUE),
     source
 )
 
 #' @title Multiple testing correction
 #' 
-#' @description Apply multiple testing correction on the outcome of statistical tests.
+#' @description Multiple testing correction
 #' 
 #' @details
-#' When testing multiple times a null hypothesis, incorrect rejection is more 
-#' likely to occur when considering all tests together. Several methods have 
-#' been developped in order to correct for this problem.
-#' See also http://en.wikipedia.org/wiki/Multiple_comparisons
+#' Apply multiple testing correction on the outcome of statistical tests.
 #' 
 #' @param mtcMethod A label indicating which method should be applied.
 #'   Available methods include:
@@ -24,7 +32,7 @@ sapply(
 #' @param outputFileNameRmd Where report paragraphs will be written
 #' @param thresholdPVal FDR threshold
 #' @return A data frame with data in matrixData (p.values, fold.change, 
-#'   significant) and the corrected p-values. Or NULL if no 
+#'   significant) and the corrected p-values.
 applyMultipleTestingCorrection <- function(mtcMethod, 
                                            matrixData, 
                                            outputFolderTemp, 
