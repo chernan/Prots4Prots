@@ -20,7 +20,7 @@ allTestsCorrectedRmd <- function(matrixData, thresholdPVal,
     ## Write data in a file usable later when the report will be transformed 
     ## into HTML
     tempOutput <- paste(
-        c(outFolder, '/all_tests_BH_Rmd_', 
+        c(outFolder, '/all_tests_mtc_Rmd_data_', 
           format(Sys.time(), "%Y%m%d%H%M%S"), 
           trunc(runif(1)*10000),'.txt'), 
         collapse='')

@@ -18,7 +18,7 @@ allTestsSignificanceRmd <- function(matrixData, thresholdPVal,
                                     outputFile, outFolder) {
     
     tempOutput <- paste(
-        c(outFolder, '/all_tests_significance_Rmd_', 
+        c(outFolder, '/all_tests_significance_Rmd_data_', 
           format(Sys.time(), "%Y%m%d%H%M%S"),
           trunc(runif(1)*10000), '.txt'), 
         collapse='')
