@@ -11,15 +11,18 @@ test_fun_applySam <- function() {
     
     design <- c(rep(1, ncol(control)), rep(2, ncol(experiment)))
     
+    capture.output(
     samFit <- SAM(x=data, y=design, 
                   logged2=TRUE, 
                   resp.type="Two class unpaired", fdr.output=0.05,
                   genenames=rowNames, geneid=rowNames)
-    
+    )
+    capture.output(
     pValues <- samr.pvalues.from.perms(samFit$samr.obj$tt, 
                                        samFit$samr.obj$ttstar)
+)
     
-    ## As SAM applies randomosation, p-values are never exactly the same...
+    ## As SAM applies randomisation, p-values are never exactly the same...
     checkEqualsNumeric(
         applySam(experiment, control, 0.05)$p.values,
         pValues,
@@ -41,16 +44,18 @@ test_fun_applyPairedSam <- function() {
     design <- rep(c(1:ncol(control)), times=2)
     design[1:ncol(control)] <- design[1:ncol(control)] * -1
     
+    capture.output(
     samFit <- SAM(x=data, y=design, 
                   logged2=TRUE, 
                   resp.type="Two class paired", fdr.output=0.05,
-                  genenames=rowNames, geneid=rowNames,
+                  genenames=rowNames, geneid=rowNames)
     )
-        
+    capture.output(
     pValues <- samr.pvalues.from.perms(samFit$samr.obj$tt, 
                                        samFit$samr.obj$ttstar)
+    )
     
-    ## As SAM applies randomosation, p-values are never exactly the same...
+    ## As SAM applies randomisation, p-values are never exactly the same...
     checkEqualsNumeric(
         applyPairedSam(experiment, control, 0.05)$p.values,
         pValues,

@@ -39,51 +39,20 @@ applySam <- function(experiment, control, thresholdPVal) {
     
     design <- c(rep(1, ncol(control)), rep(2, ncol(experiment)))
     
+    capture.output(
     samFit <- SAM(x=data, y=design, 
                   logged2=TRUE, 
                   resp.type="Two class unpaired", fdr.output=thresholdPVal,
                   genenames=rowNames, geneid=rowNames)
-    
+    )
+    capture.output(
     pValues <- samr.pvalues.from.perms(samFit$samr.obj$tt, 
-                                       samFit$samr.obj$ttstar)
-    
+                                           samFit$samr.obj$ttstar)
+    )
     returnValues <- list(sam.fit=samFit,
                          p.values=pValues
     )
-    
-    #     significant <- matrix(rep('STABLE', nrow(experiment)))
-    #     names(significant) <- rowNames
-    # 
-    #     #Get 2nd column, but no colnames?? but a print shows the col.names!
-    #     #Header:
-    #     #Gene ID  Gene Name  Score(d)  Numerator(r)  Denominator(s+s0)  Fold Change  q-value(%)
-    #     
-    #     # 2* Special cases for '1' necessary, otherwise get an error:
-    #     #  Erreur dans sam.fit$siggenes.table$genes.lo[1, 2] : 
-    #     #      nombre de dimensions incorrect
-    #     
-    #     if(sam.fit$siggenes.table$ngenes.lo == 1) {
-    #         significant[sam.fit$siggenes.table$genes.lo[2]] <- 'LO'
-    #     }
-    #     if(sam.fit$siggenes.table$ngenes.lo > 1) {
-    #         pos <- sam.fit$siggenes.table$ngenes.lo
-    #         significant[sam.fit$siggenes.table$genes.lo[1:pos,2]] <- 'LO'
-    #     }
-    #     
-    #     if(sam.fit$siggenes.table$ngenes.up == 1 ) {
-    #         significant[sam.fit$siggenes.table$genes.up[2]] <- 'UP'
-    #     }
-    #     if(sam.fit$siggenes.table$ngenes.up > 1 ) {
-    #         pos <- sam.fit$siggenes.table$ngenes.up
-    #         significant[sam.fit$siggenes.table$genes.up[1:pos,2]] <- 'UP'
-    #     }
-    #     
-    #     return.values <- data.frame(
-    #         p.values = p.values,
-    #         fold.change = log2(sam.fit$samr.obj$foldchange),
-    #         significant = significant
-    #         )
-    
+        
     return(returnValues)
 }
 
@@ -109,51 +78,21 @@ applyPairedSam <- function(experiment, control, thresholdPVal) {
     design <- rep(c(1:ncol(control)), times=2)
     design[1:ncol(control)] <- design[1:ncol(control)] * -1
     
-    samFit <- SAM(x=data, y=design, 
+    capture.output(
+  samFit <- SAM(x=data, y=design, 
                   logged2=TRUE, 
                   resp.type="Two class paired", fdr.output=thresholdPVal,
                   genenames=rowNames, geneid=rowNames,
     )
-    
+    )
+    capture.output(
     pValues <- samr.pvalues.from.perms(samFit$samr.obj$tt, 
                                        samFit$samr.obj$ttstar)
-    
+    )
     returnValues <- list(sam.fit = samFit,
                          p.values = pValues
     )
     
-    #     significant <- matrix(rep('STABLE',nrow(experiment)))
-    #     names(significant) <- rowNames
-    #     
-    #     #Get 2nd column, but no colnames?? but a print shows the col.names!
-    #     #Header:
-    #     #Gene ID  Gene Name  Score(d)  Numerator(r)  Denominator(s+s0)  Fold Change  q-value(%)
-    #     
-    #     # 2* Special cases for '1' necessary, otherwise get an error:
-    #     #  Erreur dans sam.fit$siggenes.table$genes.lo[1, 2] : 
-    #     #      nombre de dimensions incorrect
-    #     
-    #     if(sam.fit$siggenes.table$ngenes.lo == 1) {
-    #         significant[sam.fit$siggenes.table$genes.lo[2]] <- 'LO'
-    #     }
-    #     if(sam.fit$siggenes.table$ngenes.lo > 1) {
-    #         pos <- sam.fit$siggenes.table$ngenes.lo
-    #         significant[sam.fit$siggenes.table$genes.lo[1:pos,2]] <- 'LO'
-    #     }
-    #     
-    #     if(sam.fit$siggenes.table$ngenes.up == 1 ) {
-    #         significant[sam.fit$siggenes.table$genes.up[2]] <- 'UP'
-    #     }
-    #     if(sam.fit$siggenes.table$ngenes.up > 1 ) {
-    #         pos <- sam.fit$siggenes.table$ngenes.up
-    #         significant[sam.fit$siggenes.table$genes.up[1:pos,2]] <- 'UP'
-    #     }
-    #     
-    #     return.values <- data.frame(
-    #         p.values = p.values,
-    #         fold.change = log2(sam.fit$samr.obj$foldchange),
-    #         significant = significant
-    #     )
     return(returnValues)
 }
 
@@ -181,8 +120,8 @@ applyPairedSam <- function(experiment, control, thresholdPVal) {
 #' @return A data frame with three columns "p.values" "fold.change" 
 #'  "significant", in the same order as the input data
 applyAndReportSam <- function(experiment, control, 
-                                  outputFolderTemp, outputFile, 
-                                  thresholdPVal, isPaired=FALSE) {
+                              outputFolderTemp, outputFile, 
+                              thresholdPVal, isPaired=FALSE) {
     
     ## Run corresponding function if data are paired or not
     if(!isPaired) {
@@ -270,7 +209,7 @@ reportSam <- function(matrixData, thresholdPVal,
         '',
         sep="\n", file=outputFile, append=TRUE)
     
-    tempOutput <- paste(c(outputFolderTemp, '/samr_tests_significance_Rmd_', 
+    tempOutput <- paste(c(outputFolderTemp, '/samr_tests_significance_Rmd_data_', 
                           format(Sys.time(), "%Y%m%d%H%M%S"), 
                           trunc(runif(1) * 10000), '.txt'), 
                         collapse='')
@@ -282,7 +221,7 @@ reportSam <- function(matrixData, thresholdPVal,
         sep="\n", file=outputFile, append=TRUE)
     
     cat('displaySamSignificanceVolcanoPlot <- ', file=outputFile, append=TRUE)
-#     print(displaySamSignificanceVolcanoPlot)
+    #     print(displaySamSignificanceVolcanoPlot)
     cat(paste(deparse(displaySamSignificanceVolcanoPlot), collapse="\n"),
         file=outputFile, append=TRUE)
     
@@ -362,137 +301,3 @@ displaySamSignificanceVolcanoPlot <- function(matrixData, thresholdPVal,
            merge=TRUE)
 }
 
-###########################################################################################################
-
-# uppercent <- function(normal_data, percent, datafolder) {
-#     copydata <- normal_data
-#     selected_rows <- runif(nrow(normal_data)) < percent/100
-#     delta <- 0.4*abs(rowMeans(normal_data[selected_rows,]))
-#     copydata[selected_rows,1:2] <- normal_data[selected_rows,1:2] + delta
-#     copydata[selected_rows,3:4] <- normal_data[selected_rows,3:4] - delta
-#     
-#     copydata <- 2^copydata
-#     dataSet <- new("ExpressionSet", exprs = copydata)
-#     
-#     tempoutput <- paste(c(datafolder, '/normal8up',percent,'_', format(Sys.time(), "%Y%m%d%H%M%S"),trunc(runif(1)*10000),'.txt'), collapse='')
-#     write.table(cbind(copydata,selected_rows), tempoutput, sep="\t")
-#     
-#     return(list(dataset=dataSet,type="prot",file=tempoutput))
-# }
-# 
-# 
-# 
-# 
-# test_samr <- function() {
-# 
-#     source("/home/chernan/Workspace/GitHub/Prots4Prots/Prots4Prots/R/01_quality_control/heatmap.R")
-#     source("/home/chernan/Workspace/GitHub/Prots4Prots/Prots4Prots/R/00_normalization/normalization_test.R")
-#     source("/home/chernan/Workspace/GitHub/Prots4Prots/Prots4Prots/R/00_normalization/variance-stabilizing.R")
-#     source("/home/chernan/Workspace/GitHub/Prots4Prots/Prots4Prots/R/00_normalization/samr.R")
-#     
-#     
-#     #Set output directory as working directory. All output files/images/etc. will be created there
-#     oldwd <- getwd()
-#     basedir <- '/home/chernan/Workspace/GitHub/Prots4Prots/Prots4Prots/out_summary_4plex'
-#     setwd(basedir)
-#     
-#     datafolder <- "/home/chernan/Workspace/GitHub/Prots4Prots/test_data/normal8ups_4plex"
-#     dir.create(datafolder)
-# 
-#     normal_data <- replicate(4, rnorm(n=3000, mean=11.5, sd=2.2))
-#     dataset.name <- "normal8up0"
-#     dataset.obj <- uppercent(normal_data, 0, datafolder)
-#     dataset <- dataset.obj[['dataset']]
-#     all.methods.label <- paste(c('vsn05','samr'), collapse='_')
-#     
-#     ## Setup environment ####
-#     
-#     #Create working directory
-#     working.dir <- paste(c(getwd(),'/', dataset.name), collapse='')
-#     dir.create(working.dir)
-#     output_folder <- paste(c(working.dir,'/', all.methods.label), collapse='')
-#     dir.create(output_folder)
-#     
-#     #Create temp folder for temp files used in Rmd report
-#     output_folder_temp <- paste(c(output_folder,'/temp'), collapse='')
-#     dir.create(output_folder_temp)
-#     #Create Rmd report file
-#     output_file_name_Rmd <- paste(c(output_folder,'/output_',all.methods.label,'.Rmd'), collapse='')
-#     write(c(''),output_file_name_Rmd)
-#     
-#     # Analysis
-#     
-#     #First quality checks before normalization
-#     report_heatmap(exprs(dataset), output_folder_temp, output_file_name_Rmd, dist.method="manhattan")
-#     
-#     # Normalization
-#     out.val <- apply_and_report_vsn(exprs(dataset), output_folder_temp, output_file_name_Rmd, use.robust.fit=TRUE)
-#     
-#     #Second quality check after normalization
-#     report_heatmap(out.val, output_folder_temp, output_file_name_Rmd, dist.method="manhattan")
-#     
-#     #Get data to compare, depending on experimental design
-#     #Temporary! >_<; 
-#     experiment <- out.val[,1:2]
-#     control <- out.val[,3:4]
-#     threshold_pval <- 0.001
-#     
-#     #Test significance
-# #     out.pval <- apply_and_report_samr(experiment, control, output_folder_temp, output_file_name_Rmd, threshold_pval)
-#     rownames<- rownames(experiment)
-#     data <- data.frame(cbind(control, experiment))
-#     row.names(data) <- rownames
-#     
-#     design <- c(rep(1,ncol(control)), rep(2,ncol(experiment)))
-#     
-#     sam.fit <- SAM(x=data, y=design, logged2=FALSE, 
-#                    resp.type="Two class unpaired", fdr.output=threshold_pval)
-#     
-#     p.values <- samr.pvalues.from.perms(sam.fit$samr.obj$tt, sam.fit$samr.obj$ttstar)
-#     
-#     significant <- matrix(rep('STABLE',nrow(experiment)))
-#     names(significant) <- rownames
-# 
-#     #Get 2nd column, but no colnames?? but a print shows the col.names!
-#     #Header:
-#     #Gene ID  Gene Name  Score(d)  Numerator(r)  Denominator(s+s0)  Fold Change  q-value(%)
-#     
-#     # 2* Special cases for '1' necessary, otherwise get an error:
-#     #  Erreur dans sam.fit$siggenes.table$genes.lo[1, 2] : 
-#     #      nombre de dimensions incorrect
-# 
-#     if(sam.fit$siggenes.table$ngenes.lo == 1) {
-#         significant[sam.fit$siggenes.table$genes.lo[2]] <- 'LO'
-#     }
-#     if(sam.fit$siggenes.table$ngenes.lo > 1) {
-#         pos <- sam.fit$siggenes.table$ngenes.lo
-#         significant[sam.fit$siggenes.table$genes.lo[1:pos,2]] <- 'LO'
-#     }
-#     
-#     if(sam.fit$siggenes.table$ngenes.up == 1 ) {
-#         significant[sam.fit$siggenes.table$genes.up[2]] <- 'UP'
-#     }
-#     if(sam.fit$siggenes.table$ngenes.up > 1 ) {
-#         pos <- sam.fit$siggenes.table$ngenes.up
-#         significant[sam.fit$siggenes.table$genes.up[1:pos,2]] <- 'UP'
-#     }
-#     
-#     return.values <- data.frame(
-#         p.values = p.values,
-#         fold.change = log2(sam.fit$samr.obj$foldchange),
-#         significant = significant
-#     )
-#     
-#     #Multiple testing correction
-#     apply_and_report_BH(out.pval, output_folder_temp, output_file_name_Rmd, threshold_pval)
-#     
-#     #Knit report
-#     output_file_name_md <- paste(c(output_folder,'/output_',all.methods.label,'.md'), collapse='')
-#     output_file_name_html <- paste(c(output_folder,'/output_',all.methods.label,'.html'), collapse='')    
-#     knit(output_file_name_Rmd, out=output_file_name_md)
-#     knitr::knit2html(output_file_name_md, output=output_file_name_html)
-# 
-#     #Back to precedent working directory
-#     setwd(oldwd)
-#     
-# }
