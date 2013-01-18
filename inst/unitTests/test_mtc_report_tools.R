@@ -33,8 +33,8 @@ test_gra_displayCorrectedVolcanoPlot <- function() {
     )
     
     ## Run function... as test?
-    displayCorrectedVolcanoPlot(matrixData, 0.05)
     displayCorrectedVolcanoPlot(matrixData, 0.05, 
                                 title="test_displayCorrectedVolcanoPlot")
+    displayCorrectedVolcanoPlot(matrixData, 0.05)
     
 }

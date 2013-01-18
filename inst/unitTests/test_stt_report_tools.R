@@ -32,8 +32,8 @@ test_gra_displaySignificanceVolcanoPlot <- function() {
     )
     
     ## Run function... as test?
-    displaySignificanceVolcanoPlot(matrixData, 0.05)
     displaySignificanceVolcanoPlot(matrixData, 0.05, 
-                                   title="test_displayCorrectedVolcanoPlot")
+                                   title="test_displaySignificanceVolcanoPlot")
+    displaySignificanceVolcanoPlot(matrixData, 0.05)
     
 }
