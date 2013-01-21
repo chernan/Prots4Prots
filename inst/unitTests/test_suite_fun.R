@@ -7,15 +7,19 @@ library(RUnit)
 ## Manually delete content of temp/ when running test suites of only one type
 ## -----------------------------------------------------------------------------
 
-## Statistic methods
+## Normalization methods
+sapply(
+    list.files(file.path(getwd(), 'R'), pattern="nrm_.+\\.R", full.names=TRUE),
+    source
+)
 
+## Statistic methods
 sapply(
     list.files(file.path(getwd(), 'R'), pattern="stt_.+\\.R", full.names=TRUE),
     source
 )
 
 ## Multiple Testing Correction
-
 sapply(
     list.files(file.path(getwd(), 'R'), pattern="mtc_.+\\.R", full.names=TRUE),
     source
@@ -23,6 +27,13 @@ sapply(
 
 ## Test numeric functions
 
+testSuiteNRMFun <- 
+    defineTestSuite("Statistic methods (NRM functions)",
+                    dirs = file.path(getwd(), 'inst', 'unitTests'),
+                    testFileRegexp = "^test_nrm.+\\.R",
+                    testFuncRegexp = "^test_fun.+",
+                    rngKind = "Marsaglia-Multicarry",
+                    rngNormalKind = "Kinderman-Ramage")
 testSuiteSTTFun <- 
     defineTestSuite("Statistic methods (STT functions)",
                     dirs = file.path(getwd(), 'inst', 'unitTests'),
@@ -43,6 +54,7 @@ testSuiteMTCFun <-
 
 testResultFun <- runTestSuite(
     testSuites = list(
+        NRM = testSuiteNRMFun,
         STT = testSuiteSTTFun,
         MTC = testSuiteMTCFun
     ), 
