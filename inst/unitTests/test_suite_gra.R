@@ -7,6 +7,12 @@ library(RUnit)
 ## Manually delete content of temp/ when running test suites of only one type
 ## -----------------------------------------------------------------------------
 
+## Normalization methods
+sapply(
+    list.files(file.path(getwd(), 'R'), pattern="nrm_.+\\.R", full.names=TRUE),
+    source
+)
+
 ## Statistic methods
 sapply(
     list.files(file.path(getwd(), 'R'), pattern="stt_.+\\.R", full.names=TRUE),
@@ -21,8 +27,15 @@ sapply(
 
 ## Test graphic functions
 
+testSuiteNRMGra <- 
+    defineTestSuite("Normalization methods (NRM graphics)",
+                    dirs = file.path(getwd(), 'inst', 'unitTests'),
+                    testFileRegexp = "^test_nrm.+\\.R",
+                    testFuncRegexp = "^test_gra.+",
+                    rngKind = "Marsaglia-Multicarry",
+                    rngNormalKind = "Kinderman-Ramage")
 testSuiteSTTGra <- 
-    defineTestSuite("Statistic methods (STT functions)",
+    defineTestSuite("Statistic methods (STT graphics)",
                     dirs = file.path(getwd(), 'inst', 'unitTests'),
                     testFileRegexp = "^test_stt.+\\.R",
                     testFuncRegexp = "^test_gra.+",
@@ -45,6 +58,7 @@ pdf(rUnitGraTestsOutput)
 ## Warning : 'testSuite' object is not of class 'RUnitTestSuite' is a bug
 testResultGra <- runTestSuite(
     testSuites = list(
+        NRM = testSuiteNRMGra,
         STT = testSuiteSTTGra,
         MTC = testSuiteMTCGra
     ),
