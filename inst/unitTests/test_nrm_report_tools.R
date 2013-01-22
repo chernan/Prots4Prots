@@ -1,40 +1,46 @@
 
-test_rep_allTestsCorrectedRmd <- function() {
+test_rep_allTestsNormalizationRmd <- function() {
     
-    ## Setup dataset
-    set.seed(0)
-    x <- rnorm(50, mean=c(rep(0,25),rep(3,25)))
-    p <- 2*pnorm( sort(-abs(x)))
-    matrixData <- data.frame(
-        p.values = p,
-        fold.change = rnorm(50, mean=0, sd=1),
-        p.values.corrected = p.adjust(p, "BH")
-    )
+    ## Setup data
+    normalData <- replicate(8, rnorm(n=500, mean=11, sd=2.5))
     
     ## Run function... as test?
-    allTestsCorrectedRmd(matrixData, 
-                         0.05,
+    allTestsNormalizationRmd(normalData, 
                          stdout(),
                          file.path(getwd(), 'temp')
     )
 }
 
 
-test_gra_displayCorrectedVolcanoPlot <- function() {
+test_gra_displayNormalizationViolin <- function() {
 
     ## Setup data
-    set.seed(0)
-    x <- rnorm(50, mean=c(rep(0,25),rep(3,25)))
-    p <- 2*pnorm( sort(-abs(x)))
-    matrixData <- data.frame(
-        p.values = p,
-        fold.change = rnorm(50, mean=0, sd=1),
-        p.values.corrected = p.adjust(p, "BH")
-    )
+    normalData <- replicate(8, rnorm(n=500, mean=11, sd=2.5))
     
     ## Run function... as test?
-    displayCorrectedVolcanoPlot(matrixData, 0.05, 
-                                title="test_displayCorrectedVolcanoPlot")
-    displayCorrectedVolcanoPlot(matrixData, 0.05)
+    displayNormalizationViolin(normalData)
+    
+}
+
+test_gra_displayNormalizationMAplot <- function() {
+    
+    ## Setup data
+    normalData1 <- replicate(4, rnorm(n=500, mean=11, sd=2.5))
+    normalData2 <- replicate(4, rnorm(n=500, mean=11, sd=2.5))
+    dataToTest1 <- apply(normalData1, 1, mean)
+    dataToTest2 <- apply(normalData2, 1, mean)
+    
+    ## Run function... as test?
+    displayNormalizationMAplot(dataToTest1, dataToTest2)
+    
+}
+
+test_gra_displayNormalizationQQplot <- function() {
+    
+    ## Setup data
+    normalData <- rnorm(n=500, mean=11, sd=2.5)
+    
+    ## Run function... as test?
+    displayNormalizationQQplot(normalData)
     
 }
