@@ -17,15 +17,21 @@
 allTestsSignificanceRmd <- function(matrixData, thresholdPVal, 
                                     outputFile, outFolder) {
     
+    execLabel <- paste(
+        c(format(Sys.time(), "%Y%m%d%H%M%S"), trunc( 
+            runif(1) * 10000)), 
+        collapse='')
+    
     tempOutput <- paste(
-        c(outFolder, '/all_tests_significance_Rmd_data_', 
-          format(Sys.time(), "%Y%m%d%H%M%S"),
-          trunc(runif(1)*10000), '.txt'), 
+        c(outFolder, '/all_tests_significance_Rmd_data_', execLabel, '.txt'), 
         collapse='')
     write.table(matrixData, tempOutput, sep="\t") 
     
     cat('',
-        '```{r, echo=FALSE, fig.width=14, fig.height=10}',
+        paste(
+            c('```{r allTestsSignificanceRmd', 
+              execLabel, ', echo=FALSE, fig.width=14, fig.height=10}'),
+            collapse=''),
         '',
         sep="\n", file=outputFile, append=TRUE)
     

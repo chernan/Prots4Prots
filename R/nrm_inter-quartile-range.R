@@ -73,11 +73,19 @@ applyAndReportIQR <- function(dataNotNorm, outputFolderTemp, outputFile) {
     
     dataNormalized <- applyIqrFromLpe(dataNotNorm)
     
+    execLabel <- paste(
+        c(format(Sys.time(), "%Y%m%d%H%M%S"), trunc( 
+            runif(1) * 10000)), 
+        collapse='')
+    
     cat(' ',
-        'Normalization',
+        'Normalization (IQR)',
         '---------------------------------------------------------------------',
         '',
-        '```{r , echo=FALSE, warning=FALSE}',
+        paste(
+            c('```{r applyAndReportIQR', 
+              execLabel, ', echo=FALSE, warning=FALSE}'),
+            collapse=''),
         'lpe_citation <- citation("LPE")',
         '```',
         'Normalisation was achieved by using the Inter-Quartile-Range method, as available in the LPE R package (`r lpe_citation$note`).',
@@ -85,8 +93,8 @@ applyAndReportIQR <- function(dataNotNorm, outputFolderTemp, outputFile) {
         '',
         sep="\n", file=outputFile, append=TRUE)
     
-    allTestsNormalizationRmd(dataNormalized, title="IQR normalization", 
-                                outfolder=outputFolderTemp)
+    allTestsNormalizationRmd(dataNormalized, outputFile=outputFile,
+                             outFolder=outputFolderTemp)
     
     cat('',
         '> ',

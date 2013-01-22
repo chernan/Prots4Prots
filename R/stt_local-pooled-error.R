@@ -117,11 +117,21 @@ applyAndReportLPE <- function(experiment, control,
         fold.change = lpeVal[, "median.1"] - lpeVal[, "median.2"]
     )
     
+    ## Generate report
+    
+    execLabel <- paste(
+        c(format(Sys.time(), "%Y%m%d%H%M%S"), trunc( 
+            runif(1) * 10000)), 
+        collapse='')
+
     cat('',
         'Significantly different proteins',
         '---------------------------------------------------------------------',
         '',
-        '```{r citationLPE, echo=FALSE, warning=FALSE}',
+        paste(
+            c('```{r applyAndReportLPE', execLabel, 
+              ', echo=FALSE, warning=FALSE}'),
+            collapse=''),
         'lpeCitation <- citation("LPE")',
         'lpeDescription <- packageDescription("LPE")',
         '```',

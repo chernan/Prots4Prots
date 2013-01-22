@@ -1,7 +1,7 @@
 
 test_fun_applyIqrFromLpe <- function() {
     
-    set.seed(0)
+    ## Setup data
     normalData <- replicate(8, rnorm(n=500, mean=11, sd=2.5))
     
     ## Setup data
@@ -14,7 +14,6 @@ test_fun_applyIqrFromLpe <- function() {
 test_rep_applyAndReportIQR <- function() {
 
     ## Setup data
-    set.seed(0)
     normalData <- replicate(8, rnorm(n=500, mean=11, sd=2.5))
     
     ## Test

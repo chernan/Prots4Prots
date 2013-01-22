@@ -1,7 +1,6 @@
 
 test_fun_applySam <- function() {
     
-    set.seed(0)
     control <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
     experiment <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
     
@@ -33,7 +32,6 @@ test_fun_applySam <- function() {
 
 test_fun_applyPairedSam <- function() {
     
-    set.seed(0)
     control <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
     experiment <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
     
@@ -68,7 +66,6 @@ test_fun_applyPairedSam <- function() {
 test_rep_applyAndReportSam <- function() {
     
     ## Setup data
-    set.seed(0)
     normalData1 <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
     rownames(normalData1) <- as.character(1:500)
     normalData2 <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
@@ -86,7 +83,6 @@ test_rep_applyAndReportSam <- function() {
 test_rep_reportSam <- function() {
     
     ## Setup data
-    set.seed(0)
     x <- rnorm(50, mean=c(rep(0,25), rep(3,25)))
     p <- 2*pnorm( sort(-abs(x)))
 
@@ -113,7 +109,6 @@ test_rep_reportSam <- function() {
 test_gra_displaySamSignificanceVolcanoPlot <- function() {
     
     ## Setup data
-    set.seed(0)
     x <- rnorm(50, mean=c(rep(0,25),rep(3,25)))
     p <- 2*pnorm( sort(-abs(x)))
 

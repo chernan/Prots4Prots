@@ -77,6 +77,8 @@ opts_knit$set(progress=FALSE,
 
 ## Run all test suites
 
+set.seed(0)
+
 rUnitRepTestsOutput <- file.path(getwd(), 'temp', "runit_rep_output.Rmd")
 sink(rUnitRepTestsOutput)
 ## Warning : 'testSuite' object is not of class 'RUnitTestSuite'. Bug?

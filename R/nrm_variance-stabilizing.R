@@ -125,15 +125,17 @@ applyAndReportVSN <- function(dataNotNorm,
     }
     
     # Generate report
+    
+    execLabel <- paste(
+        c(format(Sys.time(), "%Y%m%d%H%M%S"), trunc( 
+            runif(1) * 10000)), 
+        collapse='')
+    
     cat('',
-        'Normalization',
+        'Normalization (VSN)',
         '---------------------------------------------------------------------',
         '',
-        '```{r, echo=FALSE, warning=FALSE}',
-        'vsn_citation <- citation("vsn")',
-        'vsn_description <- packageDescription("vsn")',
-        '```',
-        'Normalisation was achieved using the Variance Stabilizing method (R package version `r vsn_description$Version`).',
+        'Normalisation was achieved using the Variance Stabilizing method (R package version `r packageDescription("vsn")$Version`).',
         '',
         ifelse(
             useRobustFit==FALSE,
@@ -142,18 +144,21 @@ applyAndReportVSN <- function(dataNotNorm,
         ),
         sep="\n", file=outputFile, append=TRUE)
     
-    allTestsNormalizationRmd(dataNormalized, title="VS Normalization", 
-                             outfolder=outputFolderTemp)
+    allTestsNormalizationRmd(dataNormalized, outputFile=outputFile,
+                             outFolder=outputFolderTemp)
     
     tempOutput <- paste(
         c(outputFolderTemp, '/vsn_tests_normalization_Rmd_data_', 
-          format(Sys.time(), "%Y%m%d%H%M%S"), trunc(runif(1)*10000), '.txt'), 
+          execLabel, '.txt'), 
         collapse='')
     write.table(dataNormalized, tempOutput, sep="\t")
     cat('',
         'Specific test for VSN.',
         '',
-        '```{r, echo=FALSE, fig.width=10, fig.height=6}',
+        paste(
+            c('```{r applyAndReportVSN2', execLabel, 
+              ', echo=FALSE, fig.width=10, fig.height=6}'),
+            collapse=''),
         '',
         sep="\n", file=outputFile, append=TRUE
     )
@@ -182,7 +187,7 @@ applyAndReportVSN <- function(dataNotNorm,
         '> doi:10.1093/bioinformatics/18.suppl_1.S96',
         '> ',
         '> Software article (R package) :',
-        '> `r vsn_citation$title` by `r vsn_citation$author`',
+        '> `r citation("vsn")$textVersion`',
         '> ',
         '> Usage for quantitative proteomics data suggested by :',
         '> Karp, N. A., Huber, W., Sadowski, P. G., Charles, P. D., Hester, S. V, Lilley, K. S. (2010). ',
@@ -198,8 +203,4 @@ applyAndReportVSN <- function(dataNotNorm,
 }
 
 
-
-# vsn_test_normalization <- function(matrixdata) {
-#     meanSdPlot(matrixdata)
-# }
 

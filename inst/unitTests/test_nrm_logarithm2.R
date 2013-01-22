@@ -2,7 +2,6 @@
 test_fun_applyLog2 <- function() {
     
     ## Test on normal data
-    set.seed(0)
     normalData <- replicate(8, rnorm(n=500, mean=11, sd=2.5))
     applyLog2(normalData)
     
@@ -24,7 +23,6 @@ test_fun_applyLog2 <- function() {
 test_rep_applyAndReportLog2 <- function() {
 
     ## Setup data
-    set.seed(0)
     normalData <- replicate(8, rnorm(n=500, mean=11, sd=2.5))
     
     ## Test

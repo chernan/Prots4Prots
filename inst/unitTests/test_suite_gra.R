@@ -38,6 +38,8 @@ testSuiteMTCGra <-
 
 ## Run all test suites
 
+set.seed(0)
+
 rUnitGraTestsOutput <- file.path(getwd(), 'temp', "runit_gra_output.pdf")
 pdf(rUnitGraTestsOutput)
 ## Warning : 'testSuite' object is not of class 'RUnitTestSuite' is a bug

@@ -97,7 +97,6 @@ test_fun_applyAndReportTTests <- function() {
 test_rep_applyAndReportTTests <- function() {
     
     ## Setup data
-    set.seed(0)
     normalData1 <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
     normalData2 <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
     
@@ -112,7 +111,6 @@ test_rep_applyAndReportTTests <- function() {
 
 test_rep_reportTTest <- function() {
     
-    set.seed(0)
     x <- rnorm(50, mean=c(rep(0,25),rep(3,25)))
     p <- 2*pnorm( sort(-abs(x)))
     matrixData <- data.frame(

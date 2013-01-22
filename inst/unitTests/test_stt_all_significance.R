@@ -7,7 +7,6 @@ test_fun_applySummaryStatistic <- function() {
     # Error in smooth.spline(base.var.adap[, 1], base.var.adap[, 2], df = df) : 
     # missing or infinite values in inputs are not allowed 
     ## Ok on command line... :-/
-    set.seed(0)
     experiment <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
     rownames(experiment) <- as.character(1:500)
     control <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
@@ -73,7 +72,6 @@ test_fun_applySummaryStatistic <- function() {
 test_fun_applyPairedSummaryStatistic <- function() {
     
     ## Setup data
-    set.seed(0)
     experiment <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
     rownames(experiment) <- as.character(1:500)
     control <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))

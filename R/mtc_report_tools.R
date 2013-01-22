@@ -17,19 +17,25 @@
 allTestsCorrectedRmd <- function(matrixData, thresholdPVal, 
                                  outputFile, outFolder) {
     
+    execLabel <- paste(
+        c(format(Sys.time(), "%Y%m%d%H%M%S"), trunc( 
+            runif(1) * 10000)), 
+        collapse='')
+    
     ## Write data in a file usable later when the report will be transformed 
     ## into HTML
     tempOutput <- paste(
-        c(outFolder, '/all_tests_mtc_Rmd_data_', 
-          format(Sys.time(), "%Y%m%d%H%M%S"), 
-          trunc(runif(1)*10000),'.txt'), 
+        c(outFolder, '/all_tests_mtc_Rmd_data_', execLabel,'.txt'), 
         collapse='')
     write.table(matrixData, tempOutput, sep="\t") 
     
-    
     ## Write report text
+    
     cat('',
-        '```{r, echo=FALSE, fig.width=14, fig.height=10}',
+        paste(
+            c('```{r allTestsCorrectedRmd', 
+              execLabel, ', echo=FALSE, fig.width=14, fig.height=10}'),
+            collapse=''),
         '',
         sep="\n", file=outputFile, append=TRUE)
     

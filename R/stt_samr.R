@@ -40,19 +40,19 @@ applySam <- function(experiment, control, thresholdPVal) {
     design <- c(rep(1, ncol(control)), rep(2, ncol(experiment)))
     
     capture.output(
-    samFit <- SAM(x=data, y=design, 
-                  logged2=TRUE, 
-                  resp.type="Two class unpaired", fdr.output=thresholdPVal,
-                  genenames=rowNames, geneid=rowNames)
+        samFit <- SAM(x=data, y=design, 
+                      logged2=TRUE, 
+                      resp.type="Two class unpaired", fdr.output=thresholdPVal,
+                      genenames=rowNames, geneid=rowNames)
     )
     capture.output(
-    pValues <- samr.pvalues.from.perms(samFit$samr.obj$tt, 
+        pValues <- samr.pvalues.from.perms(samFit$samr.obj$tt, 
                                            samFit$samr.obj$ttstar)
     )
     returnValues <- list(sam.fit=samFit,
                          p.values=pValues
     )
-        
+    
     return(returnValues)
 }
 
@@ -79,15 +79,15 @@ applyPairedSam <- function(experiment, control, thresholdPVal) {
     design[1:ncol(control)] <- design[1:ncol(control)] * -1
     
     capture.output(
-  samFit <- SAM(x=data, y=design, 
-                  logged2=TRUE, 
-                  resp.type="Two class paired", fdr.output=thresholdPVal,
-                  genenames=rowNames, geneid=rowNames,
-    )
+        samFit <- SAM(x=data, y=design, 
+                      logged2=TRUE, 
+                      resp.type="Two class paired", fdr.output=thresholdPVal,
+                      genenames=rowNames, geneid=rowNames,
+        )
     )
     capture.output(
-    pValues <- samr.pvalues.from.perms(samFit$samr.obj$tt, 
-                                       samFit$samr.obj$ttstar)
+        pValues <- samr.pvalues.from.perms(samFit$samr.obj$tt, 
+                                           samFit$samr.obj$ttstar)
     )
     returnValues <- list(sam.fit = samFit,
                          p.values = pValues
@@ -195,11 +195,18 @@ applyAndReportSam <- function(experiment, control,
 reportSam <- function(matrixData, thresholdPVal, 
                       outputFile, outputFolderTemp) {
     
+    execLabel <- paste(
+        c(format(Sys.time(), "%Y%m%d%H%M%S"), trunc( 
+            runif(1) * 10000)), 
+        collapse='')
+
     cat('',
         'Significantly different proteins',
         '---------------------------------------------------------------------',
         '',
-        '```{r echo=FALSE, warning=FALSE}',
+        paste(
+            c('```{r reportSam', execLabel, ', echo=FALSE, warning=FALSE}'),
+            collapse=''),
         'samCitation <- citation("samr")',
         'samDescription <- packageDescription("samr")',
         '```',
@@ -210,13 +217,15 @@ reportSam <- function(matrixData, thresholdPVal,
         sep="\n", file=outputFile, append=TRUE)
     
     tempOutput <- paste(c(outputFolderTemp, '/samr_tests_significance_Rmd_data_', 
-                          format(Sys.time(), "%Y%m%d%H%M%S"), 
-                          trunc(runif(1) * 10000), '.txt'), 
+                          execLabel, '.txt'), 
                         collapse='')
     write.table(matrixData, tempOutput, sep="\t") 
     
     cat('',
-        '```{r, echo=FALSE, fig.width=14, fig.height=10}',
+        paste(
+            c('```{r reportSam2', execLabel, 
+              ', echo=FALSE, fig.width=14, fig.height=10}'),
+            collapse=''),
         '',
         sep="\n", file=outputFile, append=TRUE)
     

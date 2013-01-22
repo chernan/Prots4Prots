@@ -52,6 +52,8 @@ testSuiteMTCFun <-
 ## Run all test suites
 ## Warning : 'testSuite' object is not of class 'RUnitTestSuite' is a bug
 
+set.seed(0)
+
 testResultFun <- runTestSuite(
     testSuites = list(
         NRM = testSuiteNRMFun,

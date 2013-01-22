@@ -2,7 +2,6 @@
 test_fun_applyVSN09 <- function() {
     
     ## Setup data
-    set.seed(0)
     normalData <- replicate(8, rnorm(n=500, mean=11, sd=2.5))
     
     applyVSN09(normalData)
@@ -14,7 +13,6 @@ test_fun_applyVSN09 <- function() {
 test_fun_applyVSN05 <- function() {
     
     ## Setup data
-    set.seed(0)
     normalData <- replicate(8, rnorm(n=500, mean=11, sd=2.5))
     
     applyVSN05(normalData)
@@ -26,7 +24,6 @@ test_fun_applyVSN05 <- function() {
 test_rep_applyAndReportVSN <- function() {
 
     ## Setup data
-    set.seed(0)
     normalData <- replicate(8, rnorm(n=500, mean=11, sd=2.5))
     
     ## Test

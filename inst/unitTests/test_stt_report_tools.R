@@ -2,7 +2,6 @@
 test_rep_allTestsSignificanceRmd <- function() {
     
     ## Setup dataset
-    set.seed(0)
     x <- rnorm(50, mean=c(rep(0,25),rep(3,25)))
     p <- 2*pnorm( sort(-abs(x)))
     matrixData <- data.frame(
@@ -23,7 +22,6 @@ test_rep_allTestsSignificanceRmd <- function() {
 test_gra_displaySignificanceVolcanoPlot <- function() {
     
     ## Setup data
-    set.seed(0)
     x <- rnorm(50, mean=c(rep(0,25),rep(3,25)))
     p <- 2*pnorm( sort(-abs(x)))
     matrixData <- data.frame(

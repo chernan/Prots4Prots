@@ -6,7 +6,6 @@ test_fun_rAdjustBH <- function() {
     checkEquals(rAdjustBH(c(0, 0)), c(0, 0))
     
     ## Test with real values
-    set.seed(0)
     x <- rnorm(50, mean=c(rep(0,25),rep(3,25)))
     p <- 2*pnorm( sort(-abs(x)))
     checkEqualsNumeric(
@@ -34,7 +33,6 @@ test_fun_lpeAdjustBH <- function() {
 test_fun_applyAndReportBH <- function() {
 
     ## Setup data
-    set.seed(0)
     x <- rnorm(50, mean=c(rep(0,25),rep(3,25)))
     p <- 2*pnorm( sort(-abs(x)))
     matrixData <- data.frame(
@@ -54,7 +52,6 @@ test_fun_applyAndReportBH <- function() {
 test_rep_applyAndReportBH <- function() {
     
     ## Setup data
-    set.seed(0)
     x <- rnorm(50, mean=c(rep(0,25),rep(3,25)))
     p <- 2*pnorm( sort(-abs(x)))
     matrixData <- data.frame(
