@@ -3,6 +3,8 @@ test_fun_applyLog2 <- function() {
     
     ## Test on normal data
     normalData <- replicate(8, rnorm(n=500, mean=11, sd=2.5))
+    normalData <- 2^normalData
+    
     applyLog2(normalData)
     
     ## Test all zero data
@@ -24,6 +26,7 @@ test_rep_applyAndReportLog2 <- function() {
 
     ## Setup data
     normalData <- replicate(8, rnorm(n=500, mean=11, sd=2.5))
+    normalData <- 2^normalData
     
     ## Test
     applyAndReportLog2(
