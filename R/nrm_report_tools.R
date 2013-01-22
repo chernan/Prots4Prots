@@ -38,15 +38,15 @@ allTestsNormalizationRmd <- function(matrixData,
         sep="\n", file=outputFile, append=TRUE)
     
     cat('displayNormalizationViolin <- ', file=outputFile, append=TRUE)
-#     print(displayNormalizationViolin)
+    #     print(displayNormalizationViolin)
     cat(paste(deparse(displayNormalizationViolin), collapse="\n"), '',
         sep="\n", file=outputFile, append=TRUE)
     cat('displayNormalizationQQplot <- ', file=outputFile, append=TRUE)
-#     print(displayNormalizationQQplot)
+    #     print(displayNormalizationQQplot)
     cat(paste(deparse(displayNormalizationQQplot), collapse="\n"), '',
         sep="\n", file=outputFile, append=TRUE)
     cat('displayNormalizationMAplot <- ', file=outputFile, append=TRUE)
-#     print(displayNormalizationMAplot)
+    #     print(displayNormalizationMAplot)
     cat(paste(deparse(displayNormalizationMAplot), collapse="\n"), ' ',
         sep="\n", file=outputFile, append=TRUE)
     
@@ -83,8 +83,8 @@ allTestsNormalizationRmd <- function(matrixData,
 #' Display violin plots using the ggplot2 library.
 #' TODO Provide exp design instead of supposing it
 #' 
-#' @param matrixData A data.frame containing the p-values (3 columns necessary: 
-#'  "p.values", "p.values.corrected" and "fold.change")
+#' @param matrixData A matrix containing the intensities (log'ed)
+#' @return The plot to be printed.
 displayNormalizationViolin <- function(matrixData) {
     library("ggplot2")
     
@@ -105,10 +105,10 @@ displayNormalizationViolin <- function(matrixData) {
         Conditions = factor( 
             rep(c("Control", "Exp."), 
                 c(numProts * numReplicates, numProts * numReplicates)) )
-        )
+    )
     
-    p <- ggplot(data=intensitiesDF, aes(x=Reporters, y=Intensities)) 
-    p + geom_violin(scale = "count", mapping=aes(fill = Conditions), 
+    p <- ggplot(data=intensitiesDF, aes(x=Reporters, y=Intensities)) +
+        geom_violin(scale = "count", mapping=aes(fill = Conditions), 
                     trim=TRUE, alpha=.50) +
         stat_summary(aes(group=Reporters), 
                      fun.y=mean, fun.ymin=min, fun.ymax=max, 
@@ -116,24 +116,45 @@ displayNormalizationViolin <- function(matrixData) {
         ylab('glog2( Intensities )') +
         xlab('') +
         theme(legend.position="bottom")
+    
+    return(p)
 }
 
-#' Both vectors should be log'ed before!
+#' @title MA plot
+#' 
+#' @description MA plot using ggplot2
+#' 
+#' @details 
+#' Display a MA plots using the ggplot2 library.
+#' TODO Change, only accepts 1D vectors...
+#' 
+#' @param red1d Mean of intensities (log'ed)
+#' @param green1d Mean of intensities (log'ed)
+#' @return The plot to be printed.
 displayNormalizationMAplot <- function(red1d, green1d) {
     
     aVals <- (red1d + green1d)/2
     mVals <- red1d - green1d
     dat <- data.frame(aVals, mVals)
     
-    sdFoldchange <- sd(mVals)
+    #     sdFoldchange <- sd(mVals)
     
-#     plot(aVals, mVals, pch=16)
-    ggplot(dat, aes(x=aVals, y=mVals)) + 
+    #     plot(aVals, mVals, pch=16)
+    p <- ggplot(dat, aes(x=aVals, y=mVals)) + 
         geom_point(shape=16) + 
         geom_abline(slope = 0, intercept = 0)
     
+    return(p)
 }
 
+#' @title QQ plot
+#' 
+#' @description QQ plot
+#' 
+#' @details 
+#' Display a Quantile-Quantile plot using the generic R library.
+#' 
+#' @param vector1d Intensities (log'ed)
 displayNormalizationQQplot <- function(vector1d) {
     qqnorm(vector1d, main="", ylab='')
     qqline(vector1d)

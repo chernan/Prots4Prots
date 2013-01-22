@@ -15,10 +15,15 @@ test_rep_allTestsNormalizationRmd <- function() {
 test_gra_displayNormalizationViolin <- function() {
 
     ## Setup data
-    normalData <- replicate(8, rnorm(n=500, mean=11, sd=2.5))
+    normalData <- matrix(
+        replicate(8, rnorm(n=500, mean=11, sd=2.5)),
+        ncol=8, nrow=500
+    )
+    rownames(normalData) <- as.character(1:500)
+    colnames(normalData) <- as.character(1:8)
     
     ## Run function... as test?
-    displayNormalizationViolin(normalData)
+    print(displayNormalizationViolin(normalData))
     
 }
 
@@ -31,7 +36,7 @@ test_gra_displayNormalizationMAplot <- function() {
     dataToTest2 <- apply(normalData2, 1, mean)
     
     ## Run function... as test?
-    displayNormalizationMAplot(dataToTest1, dataToTest2)
+    print(displayNormalizationMAplot(dataToTest1, dataToTest2))
     
 }
 
