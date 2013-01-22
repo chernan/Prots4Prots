@@ -36,14 +36,14 @@ sapply(
 ## Test report functions
 
 testSuiteNRMRep <- 
-    defineTestSuite("Statistic methods (NRM functions)",
+    defineTestSuite("Normalization methods (NRM report)",
                     dirs = file.path(getwd(), 'inst', 'unitTests'),
                     testFileRegexp = "^test_nrm.+\\.R",
                     testFuncRegexp = "^test_rep.+",
                     rngKind = "Marsaglia-Multicarry",
                     rngNormalKind = "Kinderman-Ramage")
 testSuiteSTTRep <- 
-    defineTestSuite("Statistic methods (STT functions)",
+    defineTestSuite("Statistic methods (STT report)",
                     dirs = file.path(getwd(), 'inst', 'unitTests'),
                     testFileRegexp = "^test_stt.+\\.R",
                     testFuncRegexp = "^test_rep.+",

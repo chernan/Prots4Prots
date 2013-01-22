@@ -28,7 +28,7 @@ sapply(
 ## Test numeric functions
 
 testSuiteNRMFun <- 
-    defineTestSuite("Statistic methods (NRM functions)",
+    defineTestSuite("Normalization methods (NRM functions)",
                     dirs = file.path(getwd(), 'inst', 'unitTests'),
                     testFileRegexp = "^test_nrm.+\\.R",
                     testFuncRegexp = "^test_fun.+",
