@@ -43,7 +43,7 @@ applyAndReportLog2 <- function(dataNotNorm, outputFolderTemp, outputFile) {
     ## Generate report
     
     cat('',
-        'Normalization',
+        'Normalization (log2 transformation)',
         '---------------------------------------------------------------------',
         '',
         'Base 2 logarithm was applied on the raw intensities to convert them to a linear scale. Note that this transformation is only for comparison with other normalization methods. It\'s not a normalization method.',
@@ -51,8 +51,8 @@ applyAndReportLog2 <- function(dataNotNorm, outputFolderTemp, outputFile) {
         '',
         sep="\n", file=outputFile, append=TRUE)
     
-    allTestsNormalizationRmd(dataNormalized, title="Log2 normalization", 
-                                outfolder=outputFolderTemp)
+    allTestsNormalizationRmd(dataNormalized, outputFile=outputFile,
+                             outFolder=outputFolderTemp)
     
     cat('',
         '> Log2 transformation : require no citation.',
