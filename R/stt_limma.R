@@ -3,6 +3,10 @@
 #' 
 #' Similarly to a t-test, Limma tests difference between means relative to the 
 #' variability. But it uses Bayesian statistic to adjust variability estimation.
+#' Bayesian statistics can be understood as a horse race bet: each horse doesn't 
+#' have the same chance to win, if you take into account all parameters (ground, 
+#' weather, driver, if a horse is tired, or not), i.e. if you take into account 
+#' preliminary knowledge.
 #' 
 #' "Bayesian approaches offer some alternatives preferable to the ordinary (often 
 #' called frequentist, because they invoke the idea of the long-term frequency 
@@ -14,14 +18,14 @@
 #' the value of a parameter is predicted from theory, and it is more reasonable 
 #' to test whether or not that value is consistent with the observed data than 
 #' to calculate a confidence interval (Berger and Delampady 1987, Zellner 1987). 
-#' For testing such hypotheses, what is usu- ally desired (and what is 
+#' For testing such hypotheses, what is usually desired (and what is 
 #' sometimes believed to be provided by a statistical hypothesis test) is 
-#' Pr[Ho I data]. What is obtained, as pointed out earlier, is 
-#' P = Pr[observed or more extreme data I Ho]. 
-#' Bayes' theorem offers a formula for converting between them."
+#' Pr[Ho | data]. What is obtained, as pointed out earlier, is 
+#' P = Pr[observed or more extreme data | Ho]. Bayes' theorem offers a formula 
+#' for converting between them."
 #' From Johnson, D. (1999)
 #' 
-#' LIMMA (Smyth G. K., 2005) is the reference package to analyse Microarray data. 
+#' LIMMA (Smyth G. K., 2005) is the reference package to analyse microarray data. 
 #' Because of evident similarity between microarray data and quantitation data, 
 #' this tool can also be applied.
 #' 
