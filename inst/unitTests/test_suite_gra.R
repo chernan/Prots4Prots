@@ -7,6 +7,12 @@ library(RUnit)
 ## Manually delete content of temp/ when running test suites of only one type
 ## -----------------------------------------------------------------------------
 
+## Quality checks
+sapply(
+    list.files(file.path(getwd(), 'R'), pattern="qck_.+\\.R", full.names=TRUE),
+    source
+)
+
 ## Normalization methods
 sapply(
     list.files(file.path(getwd(), 'R'), pattern="nrm_.+\\.R", full.names=TRUE),
@@ -27,6 +33,13 @@ sapply(
 
 ## Test graphic functions
 
+testSuiteQCKGra <- 
+    defineTestSuite("Quality checks (QCK graphics)",
+                    dirs = file.path(getwd(), 'inst', 'unitTests'),
+                    testFileRegexp = "^test_qck.+\\.R",
+                    testFuncRegexp = "^test_gra.+",
+                    rngKind = "Marsaglia-Multicarry",
+                    rngNormalKind = "Kinderman-Ramage")
 testSuiteNRMGra <- 
     defineTestSuite("Normalization methods (NRM graphics)",
                     dirs = file.path(getwd(), 'inst', 'unitTests'),
@@ -58,6 +71,7 @@ pdf(rUnitGraTestsOutput)
 ## Warning : 'testSuite' object is not of class 'RUnitTestSuite' is a bug
 testResultGra <- runTestSuite(
     testSuites = list(
+        QCK = testSuiteQCKGra,
         NRM = testSuiteNRMGra,
         STT = testSuiteSTTGra,
         MTC = testSuiteMTCGra

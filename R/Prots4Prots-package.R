@@ -33,17 +33,22 @@
 #' The experimental design (which channels are Control, and which are 
 #' Experiments)
 #' 
-#'  (Treating missing values) (TMS)
-#'  Only option available for now: remove incomplete information.
-#'  Imputation should be done after normalization!
-#'  TODO: check that normalization mehtods can accept missing values.
-#'  
+#' Quality check (QCK)
+#' This step includes some basic checks for integrity of data, experimental 
+#' design, and the like. It can be repeated after other steps, typically after 
+#' normalization.
+#' 
 #' Pre-processing
 #' 
 #'  Normalization (NRM)
 #'  This step includes the usage of Variance Stabilizing Normalization, VSN 
 #'  with a more robust parameter, and the Inter Quartile Range normalization.
 #'  As a comparison, transformation by logarithm, base 2, is also provided.
+#'  
+#'  (Treating missing values) (TMS)
+#'  Only option available for now: remove incomplete information.
+#'  Imputation should be done AFTER normalization!
+#'  TODO: check that normalization mehtods can accept missing values.
 #'  
 #'  (Summarization) (SUM)
 #'  This step is optional if the peptide intensities have already been 

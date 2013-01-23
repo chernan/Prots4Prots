@@ -9,6 +9,12 @@ library(markdown)
 ## Manually delete content of temp/ when running test suites of only one type
 ## -----------------------------------------------------------------------------
 
+## Quality checks
+sapply(
+    list.files(file.path(getwd(), 'R'), pattern="qck_.+\\.R", full.names=TRUE),
+    source
+)
+
 ## Normalization methods
 sapply(
     list.files(file.path(getwd(), 'R'), pattern="nrm_.+\\.R", full.names=TRUE),
@@ -35,6 +41,13 @@ sapply(
 
 ## Test report functions
 
+testSuiteQCKRep <- 
+    defineTestSuite("Quality checks (QCK report)",
+                    dirs = file.path(getwd(), 'inst', 'unitTests'),
+                    testFileRegexp = "^test_qck.+\\.R",
+                    testFuncRegexp = "^test_rep.+",
+                    rngKind = "Marsaglia-Multicarry",
+                    rngNormalKind = "Kinderman-Ramage")
 testSuiteNRMRep <- 
     defineTestSuite("Normalization methods (NRM report)",
                     dirs = file.path(getwd(), 'inst', 'unitTests'),
@@ -85,6 +98,7 @@ sink(rUnitRepTestsOutput)
 # suppressWarnings(
 testResultRep <- runTestSuite(
     testSuites = list(
+        QCK = testSuiteQCKRep,
         NRM = testSuiteNRMRep,
         STT = testSuiteSTTRep,
         MTC = testSuiteMTCRep,
