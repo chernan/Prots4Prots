@@ -191,23 +191,13 @@ applyAndReportLimma <- function(experiment, control,
 #'  step of the analysis.
 reportLimma <- function(matrixData, thresholdPVal, 
                         outputFile, outputFolderTemp) {
-    execLabel <- paste(
-        c(format(Sys.time(), "%Y%m%d%H%M%S"), trunc( 
-            runif(1) * 10000)), 
-        collapse='')
 
     cat('',
         'Significantly different proteins',
         '---------------------------------------------------------------------',
         '',
-        paste(
-            c('```{r reportLimma', execLabel, ', echo=FALSE, warning=FALSE}'),
-            collapse=''),
-        'limmaCitation <- citation("limma")',
-        'limmaDescription <- packageDescription("limma")',
-        '```',
         '',
-        'Data analysis was performed using Limma modeling (R package version `r limmaDescription$Version`).',
+        'Data analysis was performed using Limma modeling (R package version `r packageDescription("limma")$Version`).',
         '',
         '',
         sep="\n", file=outputFile, append=TRUE)
@@ -226,7 +216,7 @@ reportLimma <- function(matrixData, thresholdPVal,
         '> doi:10.2202/1544-6115.1027',
         '> ',
         '> Software article (R package) :',
-        '> `r limmaCitation$textVersion`',
+        '> `r citation("limma")$textVersion`',
         '',
         '---------------------------------------------------------------------',
         '',
