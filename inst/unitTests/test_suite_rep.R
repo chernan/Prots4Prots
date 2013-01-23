@@ -21,6 +21,12 @@ sapply(
     source
 )
 
+## Summarization methods
+sapply(
+    list.files(file.path(getwd(), 'R'), pattern="sum_.+\\.R", full.names=TRUE),
+    source
+)
+
 ## Statistic methods
 sapply(
     list.files(file.path(getwd(), 'R'), pattern="stt_.+\\.R", full.names=TRUE),
@@ -41,6 +47,13 @@ sapply(
 
 ## Test report functions
 
+testSuiteREPRep <- 
+    defineTestSuite("Report generation with knitr (REP report)",
+                    dirs = file.path(getwd(), 'inst', 'unitTests'),
+                    testFileRegexp = "^test_rep.+\\.R",
+                    testFuncRegexp = "^test_rep.+",
+                    rngKind = "Marsaglia-Multicarry",
+                    rngNormalKind = "Kinderman-Ramage")
 testSuiteQCKRep <- 
     defineTestSuite("Quality checks (QCK report)",
                     dirs = file.path(getwd(), 'inst', 'unitTests'),
@@ -55,6 +68,13 @@ testSuiteNRMRep <-
                     testFuncRegexp = "^test_rep.+",
                     rngKind = "Marsaglia-Multicarry",
                     rngNormalKind = "Kinderman-Ramage")
+testSuiteSUMRep <- 
+    defineTestSuite("Summarization methods (SUM report)",
+                    dirs = file.path(getwd(), 'inst', 'unitTests'),
+                    testFileRegexp = "^test_sum.+\\.R",
+                    testFuncRegexp = "^test_rep.+",
+                    rngKind = "Marsaglia-Multicarry",
+                    rngNormalKind = "Kinderman-Ramage")
 testSuiteSTTRep <- 
     defineTestSuite("Statistic methods (STT report)",
                     dirs = file.path(getwd(), 'inst', 'unitTests'),
@@ -66,13 +86,6 @@ testSuiteMTCRep <-
     defineTestSuite("Multiple testing correction (MTC report)",
                     dirs = file.path(getwd(), 'inst', 'unitTests'),
                     testFileRegexp = "^test_mtc.+\\.R",
-                    testFuncRegexp = "^test_rep.+",
-                    rngKind = "Marsaglia-Multicarry",
-                    rngNormalKind = "Kinderman-Ramage")
-testSuiteREPRep <- 
-    defineTestSuite("Report generation with knitr (REP report)",
-                    dirs = file.path(getwd(), 'inst', 'unitTests'),
-                    testFileRegexp = "^test_rep.+\\.R",
                     testFuncRegexp = "^test_rep.+",
                     rngKind = "Marsaglia-Multicarry",
                     rngNormalKind = "Kinderman-Ramage")
@@ -98,11 +111,12 @@ sink(rUnitRepTestsOutput)
 # suppressWarnings(
 testResultRep <- runTestSuite(
     testSuites = list(
+        REP = testSuiteREPRep,
         QCK = testSuiteQCKRep,
         NRM = testSuiteNRMRep,
+        SUM = testSuiteSUMRep,
         STT = testSuiteSTTRep,
-        MTC = testSuiteMTCRep,
-        REP = testSuiteREPRep
+        MTC = testSuiteMTCRep
     ),
     verbose=0)
 # )
