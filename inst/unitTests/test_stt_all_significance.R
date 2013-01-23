@@ -1,5 +1,5 @@
 
-test_fun_applySummaryStatistic <- function() {
+test_rep_applySummaryStatistic <- function() {
 
     ## Setup data
     ## NB:
@@ -17,7 +17,7 @@ test_fun_applySummaryStatistic <- function() {
         'ttest',
         experiment, control, 
         file.path(getwd(), 'temp'), 
-        file.path(getwd(), 'temp', 'out_test_stt_applySummaryStatistic.Rmd'), 
+        stdout(), #file.path(getwd(), 'temp', 'out_test_stt_applySummaryStatistic.Rmd'), 
         0.05)[["p.values"]]
     checkTrue(all( ttestPVals <= 1 & ttestPVals >= 0), msg="t-test")
     
@@ -27,7 +27,7 @@ test_fun_applySummaryStatistic <- function() {
         'sam',
         experiment, control, 
         file.path(getwd(), 'temp'), 
-        file.path(getwd(), 'temp', 'out_test_stt_applySummaryStatistic.Rmd'), 
+        stdout(), #file.path(getwd(), 'temp', 'out_test_stt_applySummaryStatistic.Rmd'), 
         0.05)[["p.values"]]
     checkTrue(all( samPVals <= 1.01 & samPVals >= 0), msg="SAM (p-values can be >1... ?!)")
     
@@ -36,7 +36,7 @@ test_fun_applySummaryStatistic <- function() {
         'limma',
         experiment, control, 
         file.path(getwd(), 'temp'), 
-        file.path(getwd(), 'temp', 'out_test_stt_applySummaryStatistic.Rmd'), 
+        stdout(), #file.path(getwd(), 'temp', 'out_test_stt_applySummaryStatistic.Rmd'), 
         0.05)[["p.values"]]
     checkTrue(all( limmaPVals <= 1 & limmaPVals >= 0), msg="Limma")
     
@@ -46,7 +46,7 @@ test_fun_applySummaryStatistic <- function() {
             '',
             experiment, control, 
             file.path(getwd(), 'temp'), 
-            file.path(getwd(), 'temp', 'out_test_stt_applySummaryStatistic.Rmd'), 
+            stdout(), #file.path(getwd(), 'temp', 'out_test_stt_applySummaryStatistic.Rmd'), 
             0.05),
         silent = TRUE
     )
@@ -63,13 +63,13 @@ test_fun_applySummaryStatistic <- function() {
         'lpe',
         experiment, control, 
         file.path(getwd(), 'temp'), 
-        file.path(getwd(), 'temp', 'out_test_stt_applySummaryStatistic.Rmd'), 
+        stdout(), #file.path(getwd(), 'temp', 'out_test_stt_applySummaryStatistic.Rmd'), 
         0.05)[["p.values"]]
     checkTrue(all( lpePVals <= 1 & lpePVals >= 0), msg="LPE")
     
 }
 
-test_fun_applyPairedSummaryStatistic <- function() {
+test_rep_applyPairedSummaryStatistic <- function() {
     
     ## Setup data
     experiment <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
@@ -82,7 +82,7 @@ test_fun_applyPairedSummaryStatistic <- function() {
         'ttest',
         experiment, control, 
         file.path(getwd(), 'temp'), 
-        file.path(getwd(), 'temp', 'out_test_stt_applyPairedSummaryStatistic.Rmd'), 
+        stdout(), #file.path(getwd(), 'temp', 'out_test_stt_applyPairedSummaryStatistic.Rmd'), 
         0.05)[["p.values"]]
     checkTrue(all( ttestPVals <= 1 & ttestPVals >= 0), msg="t-test")
     
@@ -92,7 +92,7 @@ test_fun_applyPairedSummaryStatistic <- function() {
         'sam',
         experiment, control, 
         file.path(getwd(), 'temp'), 
-        file.path(getwd(), 'temp', 'out_test_stt_applyPairedSummaryStatistic.Rmd'), 
+        stdout(), #file.path(getwd(), 'temp', 'out_test_stt_applyPairedSummaryStatistic.Rmd'), 
         0.05)[["p.values"]]
     checkTrue(all( samPVals <= 1.01 & samPVals >= 0), msg="SAM (p-values can be >1... ?!)")
     
@@ -101,7 +101,7 @@ test_fun_applyPairedSummaryStatistic <- function() {
         'limma',
         experiment, control, 
         file.path(getwd(), 'temp'), 
-        file.path(getwd(), 'temp', 'out_test_stt_applyPairedSummaryStatistic.Rmd'), 
+        stdout(), #file.path(getwd(), 'temp', 'out_test_stt_applyPairedSummaryStatistic.Rmd'), 
         0.05)[["p.values"]]
     checkTrue(all( limmaPVals <= 1 & limmaPVals >= 0), msg="Limma")
     
@@ -111,7 +111,7 @@ test_fun_applyPairedSummaryStatistic <- function() {
             '',
             experiment, control, 
             file.path(getwd(), 'temp'), 
-            file.path(getwd(), 'temp', 'out_test_stt_applyPairedSummaryStatistic.Rmd'), 
+            stdout(), #file.path(getwd(), 'temp', 'out_test_stt_applyPairedSummaryStatistic.Rmd'), 
             0.05),
         silent = TRUE
     )

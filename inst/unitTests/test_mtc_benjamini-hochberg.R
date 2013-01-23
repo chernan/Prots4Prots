@@ -30,25 +30,6 @@ test_fun_lpeAdjustBH <- function() {
     )
 }
 
-test_fun_applyAndReportBH <- function() {
-
-    ## Setup data
-    x <- rnorm(50, mean=c(rep(0,25),rep(3,25)))
-    p <- 2*pnorm( sort(-abs(x)))
-    matrixData <- data.frame(
-        p.values = p,
-        fold.change = rnorm(50, mean=0, sd=1)
-    )
-    
-    ## Test
-    checkIdentical(
-        applyAndReportBH(matrixData, file.path(getwd(), 'temp'), 
-                         file.path(getwd(), 'temp', 'out_test_applyAndReportBH.Rmd'), 
-                         0.05)[["p.values.corrected"]],
-        p.adjust(p, "BH")
-    )
-}
-
 test_rep_applyAndReportBH <- function() {
     
     ## Setup data
@@ -58,10 +39,13 @@ test_rep_applyAndReportBH <- function() {
         p.values = p,
         fold.change = rnorm(50, mean=0, sd=1)
     )
-    
     ## Test
-    applyAndReportBH(matrixData, 
-                     file.path(getwd(), 'temp'), 
-                     stdout(), 
-                     0.05)
+    checkIdentical(
+        applyAndReportBH(matrixData, 
+                         file.path(getwd(), 'temp'), 
+                         stdout(), #file.path(getwd(), 'temp', 'out_test_applyAndReportBH.Rmd'), 
+                         0.05)[["p.values.corrected"]],
+        p.adjust(p, "BH")
+    )
+    
 }

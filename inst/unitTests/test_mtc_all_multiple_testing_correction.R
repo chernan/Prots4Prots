@@ -1,5 +1,5 @@
 
-test_fun_applyMultipleTestingCorrection <- function() {
+test_rep_applyMultipleTestingCorrection <- function() {
 
     ## Setup data
     x <- rnorm(50, mean=c(rep(0,25),rep(3,25)))
@@ -15,7 +15,7 @@ test_fun_applyMultipleTestingCorrection <- function() {
             'bh',
             matrixData, 
             file.path(getwd(), 'temp'), 
-            file.path(getwd(), 'temp', 'out_test_applyMultipleTestingCorrection.Rmd'), 
+            stdout(), #file.path(getwd(), 'temp', 'out_test_applyMultipleTestingCorrection.Rmd'), 
             0.05)[["p.values.corrected"]],
         p.adjust(p, "BH")
     )
@@ -25,7 +25,7 @@ test_fun_applyMultipleTestingCorrection <- function() {
             '',
             matrixData, 
             file.path(getwd(), 'temp'), 
-            file.path(getwd(), 'temp', 'out_test_applyMultipleTestingCorrection.Rmd'), 
+            stdout(), #file.path(getwd(), 'temp', 'out_test_applyMultipleTestingCorrection.Rmd'), 
             0.05),
         silent = TRUE
     )

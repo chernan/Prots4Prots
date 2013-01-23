@@ -70,19 +70,18 @@ test_fun_applyTTests <- function() {
     
 }
 
-test_fun_applyAndReportTTests <- function() {
-
+test_rep_applyAndReportTTests <- function() {
+    
     ## Setup data
-    set.seed(0)
     normalData1 <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
     normalData2 <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
-        
+    
     ## Test
     checkEqualsNumeric(
         applyAndReportTTests(
             normalData1, normalData2, 
             file.path(getwd(), 'temp'),
-            file.path(getwd(), 'temp', 'out_test_applyAndReportTTests.Rmd'), 
+            stdout(), #file.path(getwd(), 'temp', 'out_test_applyAndReportTTests.Rmd'), 
             0.05)[["p.values"]],
         sapply(1:500, 
                FUN = function(x) { 
@@ -91,21 +90,6 @@ test_fun_applyAndReportTTests <- function() {
                }
         )
     )
-    
-}
-
-test_rep_applyAndReportTTests <- function() {
-    
-    ## Setup data
-    normalData1 <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
-    normalData2 <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
-    
-    ## Test
-    applyAndReportTTests(
-        normalData1, normalData2, 
-        file.path(getwd(), 'temp'),
-        stdout(), 
-        0.05)
     
 }
 

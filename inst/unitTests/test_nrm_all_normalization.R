@@ -1,5 +1,5 @@
 
-test_fun_applyNormalization <- function() {
+test_rep_applyNormalization <- function() {
 
     ## Setup data
     normalData <- replicate(8, rnorm(n=3000, mean=11.5, sd=2.2))
@@ -16,28 +16,28 @@ test_fun_applyNormalization <- function() {
         'log2',
         dataSet, 
         file.path(getwd(), 'temp'), 
-        stdout(), #file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
+        stdout() #file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
     )
     
     applyNormalization(
         'iqr',
         dataSet, 
         file.path(getwd(), 'temp'), 
-        stdout(), #file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
+        stdout() #file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
     )
 
     applyNormalization(
         'vsn',
         dataSet, 
         file.path(getwd(), 'temp'), 
-        stdout(), #file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
+        stdout() #file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
     )
     
     applyNormalization(
         'vsn05',
         dataSet, 
         file.path(getwd(), 'temp'), 
-        stdout(), #file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
+        stdout() #file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
     )
     
     checkException(
@@ -45,7 +45,7 @@ test_fun_applyNormalization <- function() {
             '',
             dataSet, 
             file.path(getwd(), 'temp'), 
-            stdout(), #file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
+            stdout() #file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
             ),
         silent = TRUE
     )
