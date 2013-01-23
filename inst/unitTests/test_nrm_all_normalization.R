@@ -16,28 +16,28 @@ test_fun_applyNormalization <- function() {
         'log2',
         dataSet, 
         file.path(getwd(), 'temp'), 
-        file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
+        stdout(), #file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
     )
     
     applyNormalization(
         'iqr',
         dataSet, 
         file.path(getwd(), 'temp'), 
-        file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
+        stdout(), #file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
     )
 
     applyNormalization(
         'vsn',
         dataSet, 
         file.path(getwd(), 'temp'), 
-        file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
+        stdout(), #file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
     )
     
     applyNormalization(
         'vsn05',
         dataSet, 
         file.path(getwd(), 'temp'), 
-        file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
+        stdout(), #file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
     )
     
     checkException(
@@ -45,7 +45,7 @@ test_fun_applyNormalization <- function() {
             '',
             dataSet, 
             file.path(getwd(), 'temp'), 
-            file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
+            stdout(), #file.path(getwd(), 'temp', 'out_test_nrm_applyNormalization.Rmd')
             ),
         silent = TRUE
     )
