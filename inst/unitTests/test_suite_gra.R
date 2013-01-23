@@ -66,7 +66,7 @@ testSuiteMTCGra <-
 
 set.seed(0)
 
-rUnitGraTestsOutput <- file.path(getwd(), 'temp', "runit_gra_output.pdf")
+rUnitGraTestsOutput <- file.path(getwd(), 'temp', "runit_outputs_gra_tests.pdf")
 pdf(rUnitGraTestsOutput)
 ## Warning : 'testSuite' object is not of class 'RUnitTestSuite' is a bug
 testResultGra <- runTestSuite(
@@ -85,7 +85,7 @@ file.show(rUnitGraTestsOutput)
 
 ## Report tests as HTML
 
-rUnitGraTestsReportFile <- file.path(getwd(), 'temp', "runit_gra_tests_output.html")
+rUnitGraTestsReportFile <- file.path(getwd(), 'temp', "runit_report_gra_tests.html")
 printHTMLProtocol(testResultGra, fileName=rUnitGraTestsReportFile)
 browseURL(paste0('file://', rUnitGraTestsReportFile) )
 

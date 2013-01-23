@@ -64,7 +64,7 @@ testResultFun <- runTestSuite(
 
 ## Report tests as HTML
 
-rUnitFunTestsReportFile <- file.path(getwd(), 'temp', "runit_fun_tests_output.html")
+rUnitFunTestsReportFile <- file.path(getwd(), 'temp', "runit_report_fun_tests.html")
 printHTMLProtocol(testResultFun, fileName=rUnitFunTestsReportFile)
 browseURL(paste0('file://', rUnitFunTestsReportFile) )
 

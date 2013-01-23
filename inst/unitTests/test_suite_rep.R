@@ -92,7 +92,7 @@ opts_knit$set(progress=FALSE,
 
 set.seed(0)
 
-rUnitRepTestsOutput <- file.path(getwd(), 'temp', "runit_rep_output.Rmd")
+rUnitRepTestsOutput <- file.path(getwd(), 'temp', "runit_outputs_rep_tests.Rmd")
 sink(rUnitRepTestsOutput)
 ## Warning : 'testSuite' object is not of class 'RUnitTestSuite'. Bug?
 # suppressWarnings(
@@ -111,11 +111,11 @@ sink(file=NULL)
 ## Generate and view knitr report
 
 rUnitRepTestsOutputMd <- 
-    file.path(getwd(), 'temp', "runit_rep_output.md")
+    file.path(getwd(), 'temp', "runit_outputs_rep_tests.md")
 knit(rUnitRepTestsOutput, output=rUnitRepTestsOutputMd)
 
 rUnitRepTestsOutputHtml <- 
-    file.path(getwd(), 'temp', "runit_rep_output.html")
+    file.path(getwd(), 'temp', "runit_outputs_rep_tests.html")
 markdownToHTML(file=rUnitRepTestsOutputMd, output=rUnitRepTestsOutputHtml)
 browseURL(paste0('file://', rUnitRepTestsOutputHtml) )
 
@@ -124,7 +124,7 @@ opts_knit$restore()
 
 ## Report tests as HTML
 
-rUnitRepTestsReportFile <- file.path(getwd(), 'temp', "runit_rep_tests_output.html")
+rUnitRepTestsReportFile <- file.path(getwd(), 'temp', "runit_report_rep_tests.html")
 printHTMLProtocol(testResultRep, fileName=rUnitRepTestsReportFile)
 browseURL(paste0('file://', rUnitRepTestsReportFile) )
 
