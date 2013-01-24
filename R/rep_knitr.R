@@ -2,7 +2,7 @@ library(knitr)
 
 #' @title Generate HTML report with knitr.
 #' 
-#' @description
+#' @description Generate HTML report with knitr.
 #' 
 #' @details
 #' Generate a HTML report given a Rmd file. Intermediate md file is also 
