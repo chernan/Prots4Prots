@@ -4,7 +4,7 @@
 #' 
 #' Tusher, V., Tibshirani, R., & Chu, G. (2001). 
 #' Significance analysis of microarrays applied to the ionizing radiation response. 
-#' Proceedings of the National Academy of Sciences of the United States of America, 98(9), 5116–21. 
+#' Proceedings of the National Academy of Sciences of the United States of America, 98(9), 5116-21. 
 #' doi:10.1073/pnas.091062498
 #' 
 #' How to install:
@@ -254,7 +254,7 @@ reportSam <- function(matrixData, thresholdPVal,
         '> Method article :',
         '> Significance analysis of microarrays applied to the ionizing radiation response. ',
         '> Tusher, V., Tibshirani, R., & Chu, G. (2001). ',
-        '> Proceedings of the National Academy of Sciences of the United States of America, 98(9), 5116–21. ',
+        '> Proceedings of the National Academy of Sciences of the United States of America, 98(9), 5116-21. ',
         '> doi:10.1073/pnas.091062498',
         '> ',
         '> Software article (R package) :',

@@ -31,20 +31,20 @@
 #' Huber, W., Von Heydebreck, A., Sultmann, H., Poustka, A., & Vingron, M. (2002). 
 #' Variance stabilization applied to microarray data calibration and to the 
 #' quantification of differential expression. 
-#' Bioinformatics, 18(Suppl 1), S96–S104. 
+#' Bioinformatics, 18(Suppl 1), S96-S104. 
 #' doi:10.1093/bioinformatics/18.suppl_1.S96
 #' 
 #' Karp, N. A., Huber, W., Sadowski, P. G., Charles, P. D., Hester, S. V, 
 #' Lilley, K. S. (2010). 
 #' Addressing accuracy and precision issues in iTRAQ quantitation. 
-#' Molecular & cellular proteomics : MCP, 9(9), 1885–97. 
+#' Molecular & cellular proteomics : MCP, 9(9), 1885-97. 
 #' doi:10.1074/mcp.M900628-MCP200
 #' 
 #' Mahoney, D. W., Therneau, T. M., Heppelmann, C. J., Higgins, L., 
 #' Benson, L. M., Zenka, R. M., Jagtap, P., et al. (2011). 
 #' Relative quantification: characterization of bias, variability and fold 
 #' changes in mass spectrometry data from iTRAQ-labeled peptides. 
-#' Journal of proteome research, 10(9), 4325–33. 
+#' Journal of proteome research, 10(9), 4325-33. 
 #' doi:10.1021/pr2001308
 #' 
 #' @seealso http://bioinfo.cnio.es/files/training/Microarray_Course/3_UBio_Normalization_Theory.pdf
@@ -183,7 +183,7 @@ applyAndReportVSN <- function(dataNotNorm,
         '> Method article :',
         '> Variance stabilization applied to microarray data calibration and to the quantification of differential expression. ',
         '> Huber, W., Von Heydebreck, A., Sultmann, H., Poustka, A., & Vingron, M. (2002).',
-        '> Bioinformatics, 18(Suppl 1), S96–S104. ',
+        '> Bioinformatics, 18(Suppl 1), S96-S104. ',
         '> doi:10.1093/bioinformatics/18.suppl_1.S96',
         '> ',
         '> Software article (R package) :',
@@ -192,7 +192,7 @@ applyAndReportVSN <- function(dataNotNorm,
         '> Usage for quantitative proteomics data suggested by :',
         '> Karp, N. A., Huber, W., Sadowski, P. G., Charles, P. D., Hester, S. V, Lilley, K. S. (2010). ',
         '> Addressing accuracy and precision issues in iTRAQ quantitation. ',
-        '> Molecular & cellular proteomics : MCP, 9(9), 1885–97. ',
+        '> Molecular & cellular proteomics : MCP, 9(9), 1885-97. ',
         '> doi:10.1074/mcp.M900628-MCP200',
         ' ',
         '---------------------------------------------------------------------',
