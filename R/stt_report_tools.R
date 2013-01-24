@@ -18,8 +18,7 @@ allTestsSignificanceRmd <- function(matrixData, thresholdPVal,
                                     outputFile, outFolder) {
     
     execLabel <- paste(
-        c(format(Sys.time(), "%Y%m%d%H%M%S"), trunc( 
-            runif(1) * 10000)), 
+        c(format(Sys.time(), "%Y%m%d%H%M%S"), trunc(runif(1) * 10000)), 
         collapse='')
     
     tempOutput <- paste(
