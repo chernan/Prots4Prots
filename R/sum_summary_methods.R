@@ -1,4 +1,5 @@
 library(plyr)
+library(Biobase)
 
 #' @title Report summarization
 #' 
