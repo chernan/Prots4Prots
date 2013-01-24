@@ -64,7 +64,7 @@ test_rep_applyAndReportSumMean <- function() {
     
 }
 
-test_rep_applyAndReportMedian <- function() {
+test_rep_applyAndReportSumMedian <- function() {
     
     ## Setup data
     normalData <- data.frame(replicate(8, rnorm(n=500, mean=11.5, sd=2.2)))
@@ -86,13 +86,13 @@ test_rep_applyAndReportMedian <- function() {
                    featureData = new("AnnotatedDataFrame", fData))
     
     ## Run function... as test?
-    applyAndReportMedian(dataSet, normalData, 
+    applyAndReportSumMedian(dataSet, normalData, 
                           file.path(getwd(), 'temp'), stdout())    
     
 }
 
 
-test_rep_applyAndReportTrimmedMean20 <- function() {
+test_rep_applyAndReportSumTrimmedMean20 <- function() {
     
     ## Setup data
     normalData <- data.frame(replicate(8, rnorm(n=500, mean=11.5, sd=2.2)))
@@ -114,13 +114,13 @@ test_rep_applyAndReportTrimmedMean20 <- function() {
                    featureData = new("AnnotatedDataFrame", fData))
     
     ## Run function... as test?
-    applyAndReportTrimmedMean20(dataSet, normalData, 
+    applyAndReportSumTrimmedMean20(dataSet, normalData, 
                           file.path(getwd(), 'temp'), stdout())    
     
 }
 
 
-test_rep_applyAndReportMostVariablePep <- function() {
+test_rep_applyAndReportSumMostVariablePep <- function() {
     
     ## Setup data
     normalData <- data.frame(replicate(8, rnorm(n=500, mean=11.5, sd=2.2)))
@@ -142,13 +142,13 @@ test_rep_applyAndReportMostVariablePep <- function() {
                    featureData = new("AnnotatedDataFrame", fData))
     
     ## Run function... as test?
-    applyAndReportMostVariablePep(dataSet, normalData, 
+    applyAndReportSumMostVariablePep(dataSet, normalData, 
                           file.path(getwd(), 'temp'), stdout())    
     
 }
 
 
-test_rep_applyAndReportMostintensePep <- function() {
+test_rep_applyAndReportSumMostintensePep <- function() {
     
     ## Setup data
     normalData <- data.frame(replicate(8, rnorm(n=500, mean=11.5, sd=2.2)))
@@ -170,13 +170,13 @@ test_rep_applyAndReportMostintensePep <- function() {
                    featureData = new("AnnotatedDataFrame", fData))
     
     ## Run function... as test?
-    applyAndReportMostintensePep(dataSet, normalData, 
+    applyAndReportSumMostintensePep(dataSet, normalData, 
                           file.path(getwd(), 'temp'), stdout())    
     
 }
 
 
-test_rep_applyAndReportSumintens <- function() {
+test_rep_applyAndReportSumIntens <- function() {
     
     ## Setup data
     normalData <- data.frame(replicate(8, rnorm(n=500, mean=11.5, sd=2.2)))
@@ -198,7 +198,7 @@ test_rep_applyAndReportSumintens <- function() {
                    featureData = new("AnnotatedDataFrame", fData))
     
     ## Run function... as test?
-    applyAndReportSumintens(dataSet, normalData, 
+    applyAndReportSumIntens(dataSet, normalData, 
                           file.path(getwd(), 'temp'), stdout())    
     
 }

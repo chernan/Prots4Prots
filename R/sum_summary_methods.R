@@ -83,13 +83,13 @@ allTestsSummarizationRmd <- function(dataProteins,
 #' @return A ExpressionSet containing (non-)summarized data as expression data.
 applyAndReportSumNA <- function(dataset, datasetNorm, 
                                 outputFolderTemp, outputFile) {
-
+    
     #no summary applied, just to test pipeline
     
     dataProteins <- new("ExpressionSet", 
-                         exprs = datasetNorm, 
-                         phenoData = phenoData(dataset),
-                         featureData = featureData(dataset)
+                        exprs = datasetNorm, 
+                        phenoData = phenoData(dataset),
+                        featureData = featureData(dataset)
     )
     
     ## Generate report    
@@ -129,8 +129,8 @@ applyAndReportSumNA <- function(dataset, datasetNorm,
 #'  this Rmd file.
 #' @return A ExpressionSet containing summarized data as expression data.
 applyAndReportSumMean <- function(dataset, datasetNorm, 
-                               outputFolderTemp, outputFile) {
-
+                                  outputFolderTemp, outputFile) {
+    
     #mean by prot
     aggrDataset <- aggregate(
         datasetNorm, 
@@ -140,9 +140,9 @@ applyAndReportSumMean <- function(dataset, datasetNorm,
     
     dataProteins <- new(
         "ExpressionSet", 
-         exprs = aggrDataset[, names(datasetNorm)], 
-         phenoData = phenoData(dataset),
-         featureData = new("AnnotatedDataFrame", data.frame(aggrDataset[, 1]))
+        exprs = aggrDataset[, names(datasetNorm)], 
+        phenoData = phenoData(dataset),
+        featureData = new("AnnotatedDataFrame", data.frame(aggrDataset[, 1]))
     )
     
     ## Generate report
@@ -182,7 +182,7 @@ applyAndReportSumMean <- function(dataset, datasetNorm,
 #' @param outputFile Report of current analysis step will be appended to 
 #'  this Rmd file.
 #' @return A ExpressionSet containing summarized data as expression data.
-applyAndReportMedian <- function(dataset, datasetNorm, 
+applyAndReportSumMedian <- function(dataset, datasetNorm, 
                                     outputFolderTemp, outputFile) {
     
     #median by prot
@@ -206,7 +206,7 @@ applyAndReportMedian <- function(dataset, datasetNorm,
         'Median by protein group.',
         '',
         sep="\n", file=outputFile, append=TRUE)
-        
+    
     allTestsSummarizationRmd(dataProteins, outputFile, outputFolderTemp)
     
     cat('',
@@ -235,8 +235,8 @@ applyAndReportMedian <- function(dataset, datasetNorm,
 #' @param outputFile Report of current analysis step will be appended to 
 #'  this Rmd file.
 #' @return A ExpressionSet containing summarized data as expression data.
-applyAndReportTrimmedMean20 <- function(dataset, datasetNorm, 
-                                       outputFolderTemp, outputFile) {
+applyAndReportSumTrimmedMean20 <- function(dataset, datasetNorm, 
+                                           outputFolderTemp, outputFile) {
     
     #trimmed mean by prot
     aggrDataset <- aggregate(
@@ -260,7 +260,7 @@ applyAndReportTrimmedMean20 <- function(dataset, datasetNorm,
         'Trimmed mean by protein group (20%).',
         '',
         sep="\n", file=outputFile, append=TRUE)
-        
+    
     allTestsSummarizationRmd(dataProteins, outputFile, outputFolderTemp)
     
     cat('',
@@ -288,21 +288,21 @@ applyAndReportTrimmedMean20 <- function(dataset, datasetNorm,
 #' @param outputFile Report of current analysis step will be appended to 
 #'  this Rmd file.
 #' @return A ExpressionSet containing summarized data as expression data.
-applyAndReportMostVariablePep <- function(dataset, datasetNorm, 
+applyAndReportSumMostVariablePep <- function(dataset, datasetNorm, 
                                              outputFolderTemp, outputFile) {
     #Look 
     tempDF <- data.frame(
         datasetNorm, 
         "Majority.protein.IDs"=featureData(dataset)[["Majority.protein.IDs"]])
     aggrDataset <- ddply(.data=tempDF, 
-                          .variables="Majority.protein.IDs", 
-                          .fun=function(df) {
-                                variances <- apply(df[, names(datasetNorm)], 1, var)
-                                max.var <- max(variances)
-                                return(df[(which(variances == max.var))[1], ])
-                          }
+                         .variables="Majority.protein.IDs", 
+                         .fun=function(df) {
+                             variances <- apply(df[, names(datasetNorm)], 1, var)
+                             max.var <- max(variances)
+                             return(df[(which(variances == max.var))[1], ])
+                         }
     )
-
+    
     dataProteins <- new(
         "ExpressionSet", 
         exprs = data.frame(aggrDataset[, names(datasetNorm)]), 
@@ -312,7 +312,7 @@ applyAndReportMostVariablePep <- function(dataset, datasetNorm,
             data.frame(
                 "Majority.protein.IDs"=aggrDataset[["Majority.protein.IDs"]]))
     )
-            
+    
     ## Generate report    
     cat('',
         'Summary',
@@ -347,31 +347,31 @@ applyAndReportMostVariablePep <- function(dataset, datasetNorm,
 #' @param outputFile Report of current analysis step will be appended to 
 #'  this Rmd file.
 #' @return A ExpressionSet containing summarized data as expression data.
-applyAndReportMostintensePep <- function(dataset, datasetNorm, 
+applyAndReportSumMostintensePep <- function(dataset, datasetNorm, 
                                             outputFolderTemp, outputFile) {
-
+    
     tempDF <- data.frame(
         datasetNorm, 
         "Majority.protein.IDs"=featureData(dataset)[["Majority.protein.IDs"]])
     aggrDataset <- ddply(.data=tempDF, 
-                          .variables="Majority.protein.IDs", 
-                          .fun=function(df) {
-                              sums <- apply(df[, names(datasetNorm)], 1, sum)
-                              max.sum <- max(sums)
-                              return(df[(which(sums == max.sum))[1],])
-                          }
+                         .variables="Majority.protein.IDs", 
+                         .fun=function(df) {
+                             sums <- apply(df[, names(datasetNorm)], 1, sum)
+                             max.sum <- max(sums)
+                             return(df[(which(sums == max.sum))[1],])
+                         }
     )
     
     dataProteins <- new(
         "ExpressionSet", 
-         exprs = data.frame(aggrDataset[, names(datasetNorm)]), 
-         phenoData = phenoData(dataset),
-         featureData = new(
-             "AnnotatedDataFrame",
-             data.frame(
-                 "Majority.protein.IDs"=aggrDataset[["Majority.protein.IDs"]]))
+        exprs = data.frame(aggrDataset[, names(datasetNorm)]), 
+        phenoData = phenoData(dataset),
+        featureData = new(
+            "AnnotatedDataFrame",
+            data.frame(
+                "Majority.protein.IDs"=aggrDataset[["Majority.protein.IDs"]]))
     )
-
+    
     ## Generate report    
     cat('',
         'Summary',
@@ -408,8 +408,8 @@ applyAndReportMostintensePep <- function(dataset, datasetNorm,
 #'  this Rmd file.
 #' @return A ExpressionSet containing summarized data as expression data.
 #' Output a new paragraph in an Rmd file describing the outcome of applying this method, including code to generate graphs.
-applyAndReportSumintens <- function(dataset, datasetNorm, 
-                                       outputFolderTemp, outputFile) {
+applyAndReportSumIntens <- function(dataset, datasetNorm, 
+                                    outputFolderTemp, outputFile) {
     
     #mean by prot
     aggrDataset <- aggregate(
@@ -420,9 +420,9 @@ applyAndReportSumintens <- function(dataset, datasetNorm,
     
     dataProteins <- new(
         "ExpressionSet", 
-         exprs = aggrDataset[, names(datasetNorm)], 
-         phenoData = phenoData(dataset),
-         featureData = new("AnnotatedDataFrame", data.frame(aggrDataset[, 1]))
+        exprs = aggrDataset[, names(datasetNorm)], 
+        phenoData = phenoData(dataset),
+        featureData = new("AnnotatedDataFrame", data.frame(aggrDataset[, 1]))
     )
     
     ## Generate report    
