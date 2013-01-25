@@ -5,13 +5,13 @@
 #' 
 #' @concepts Multiple_testing_correction
 #' 
-#' @section Introduction.
+#' @section Introduction:
 #' When testing multiple times a null hypothesis, incorrect rejection is more 
 #' likely to occur when considering all tests together. Several methods have 
 #' been developped in order to correct this problem and maintain FDR to an 
 #' acceptable level.
 #' 
-#' @section References.
+#' @section References:
 #' http://en.wikipedia.org/wiki/Multiple_comparisons
 #' 
 sapply(

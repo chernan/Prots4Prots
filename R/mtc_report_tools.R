@@ -13,6 +13,7 @@
 #' @param matrixData A data.frame containing the p-values (3 columns necessary: 
 #'  "p.values", "p.values.corrected" and "fold.change")
 #' @param thresholdPVal Threshold to be used for significant p-values
+#' @param outputFile The knitr report.
 #' @param outFolder Where the temporary file will be saved
 allTestsCorrectedRmd <- function(matrixData, thresholdPVal, 
                                  outputFile, outFolder) {

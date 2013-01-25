@@ -1,3 +1,5 @@
+#' @import plyr
+#' @import Biobase
 library(plyr)
 library(Biobase)
 

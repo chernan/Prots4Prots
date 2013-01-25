@@ -1,3 +1,4 @@
+#' @import knitr
 library(knitr)
 
 #' @title Generate HTML report with knitr.

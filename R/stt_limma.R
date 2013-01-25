@@ -5,7 +5,7 @@
 #' 
 #' @concepts Significance
 #' 
-#' @section Introduction.
+#' @section Introduction:
 #' Similarly to a t-test, Limma tests difference between means relative to the 
 #' variability. But it uses Bayesian statistic to adjust variability estimation.
 #' Bayesian statistics can be understood as a horse race bet: each horse doesn't 
@@ -30,7 +30,7 @@
 #' for converting between them."
 #' From Johnson, D. (1999)
 #' 
-#' @section References.
+#' @section References:
 #' LIMMA (Smyth G. K., 2005) is the reference package to analyse microarray data. 
 #' Because of evident similarity between microarray data and quantitation data, 
 #' this tool can also be applied.
@@ -44,7 +44,7 @@
 #' Smyth, G. K. (2005). Limma: linear models for microarray data. 
 #' Bioinformatics and Computational Biology Solutions using R and Bioconductor
 #' R. Gentleman, V. Carey, S. Dudoit, R. Irizarry, W. Huber (eds.), 
-#' Springer, New York, pages 397–420.
+#' Springer, New York, pages 397-4q20.
 #' 
 #' Johnson, D. (1999). 
 #' The Insignificance of Statistical Significance Testing. 

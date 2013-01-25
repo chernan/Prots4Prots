@@ -5,10 +5,10 @@
 #' 
 #' @concepts Normalization
 #' 
-#' @section Introduction.
+#' @section Introduction:
 #' Transforms data to convert them to a linear scale.
 #' 
-
+NULL
 
 #' @title Apply log2.
 #' 

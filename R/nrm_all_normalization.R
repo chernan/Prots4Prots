@@ -5,11 +5,11 @@
 #' 
 #' @concepts Normalization
 #' 
-#' @section Introduction.
+#' @section Introduction:
 #' Normalization is the process of making different samples comparable by 
 #' adjusting them to a common scale.
 #' 
-#' @section References.
+#' @section References:
 #' http://en.wikipedia.org/wiki/Normalization_%28statistics%29
 #' 
 sapply(

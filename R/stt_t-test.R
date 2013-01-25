@@ -5,7 +5,7 @@
 #' 
 #' @concepts Significance
 #' 
-#' @section Introduction.
+#' @section Introduction:
 #' A t statistic is the distance between two data sets in units of standard 
 #' deviation.
 #' This test has low statistical power when applied to small sample size.
@@ -29,13 +29,13 @@
 #' A comparison between paired samples has greater power, because of a similar 
 #' noise factor in paired samples.
 #' 
-#' @section Assumptions.
+#' @section Assumptions:
 #' 
 #' 1/ Normality
 #' 
 #' The two samples should follow a normal distribution under the null 
 #' hypothesis (e.g if there is no difference betwween them). 
-#' This can be tested by Shapiro-Wilk (parametric) or Kolmogorov–Smirnov 
+#' This can be tested by Shapiro-Wilk (parametric) or Kolmogorov-Smirnov 
 #' (non-parametric) tests, or assessed by a normal quantile plot.
 #' 
 #' 2/ Homoscedasticity, or equality of variance between samples
@@ -56,8 +56,8 @@
 #' - Bartlett : If the distributions are nearly normal, otherwise it may just be 
 #'   testing for non-normality (being sensitive to departures from normality).
 #' - Levene : If samples are small (true!?), or data are not normal (or you 
-#'   don’t know). Relies on the mean.
-#' - Brown–Forsythe : Non-parametric alternative to the Levene test, relies on 
+#'   don't know). Relies on the mean.
+#' - Brown-Forsythe : Non-parametric alternative to the Levene test, relies on 
 #'   either the median or the trimmed mean. To be used in case of strong 
 #'   evidence of departure from normality (after a Q-Q plot, for instance).
 #' - F test : Same as Bartlett's test. Extremely sensitive to departures from 
@@ -76,7 +76,7 @@
 #' NB: use of the t-test requires no citation. But it should be mentionned 
 #' whether Student's or Welch's test was used.
 #' 
-#' @section References.
+#' @section References:
 #' 
 #' Should we abandon the t-test in the analysis of gene expression microarray 
 #' data: a comparison of variance modeling strategies. 
@@ -88,7 +88,7 @@
 #' Modern robust statistical methods: an easy way to maximize the accuracy and 
 #' power of your research. 
 #' Erceg-Hurn, D. M., & Mirosevich, V. M. (2008). 
-#' The American psychologist, 63(7), 591–601. 
+#' The American psychologist, 63(7), 591-601. 
 #' doi:10.1037/0003-066X.63.7.591
 #' 
 #' http://en.wikipedia.org/wiki/Student%27s_t-test
@@ -136,19 +136,17 @@ apply2SampleTTest <- function(xExp, xControl, confidence=0.95,
 #' @param experiment Dataset for experiment (condition 1).
 #' @param control Dataset for control (condition 2).
 #' @param significance Maximum threshold for the p-values (e.g 0.05)
-#' @param isHomoscedastic If set to FALSE, Welch's test will be performed, 
-#'  otherwise Student's test will be used. 
 #' @param isPaired If the samples are paired (ex: sample 1,2,3 in condition 1  
 #'  vs sample 1,2,3 in condition 2)
 #' @return A data frame with two columns "pval" p-value of the t-test, 
 #'  and "foldchange" computed as either the difference between the means 
 #'  (non-paired) or the mean of the differences (paired))
-applyTTests <- function(experiment, control, rowNames, significance, isPaired) {
+applyTTests <- function(experiment, control, significance, isPaired) {
     
     nbRow <- nrow(experiment)
     confidence <- (1 - significance)
     
-    #     stackedData <- stack(data.frame(cbind(experiment,control), row.names=rowNames))
+    #     stackedData <- stack(data.frame(cbind(experiment,control), row.names=rownames(experiment)))
     #     isHomoscedastic <- (bartlett.test(stackedData$values, 
     #                                        g=stackedData$ind)$p.value < significance)
     
@@ -173,7 +171,7 @@ applyTTests <- function(experiment, control, rowNames, significance, isPaired) {
               }
         )
     )
-    resultT <- data.frame(resultT, row.names=rowNames)
+    resultT <- data.frame(resultT, row.names=rownames(experiment))
     return(resultT)
 }
 
@@ -203,7 +201,6 @@ applyAndReportTTests <- function(experiment, control, outputFolderTemp,
                                  outputFile, thresholdPVal, isPaired=FALSE) {
     
     datasetTTest <- applyTTests(experiment, control, 
-                                rownames(experiment), 
                                 thresholdPVal, isPaired)
     
     matrixData <- data.frame(

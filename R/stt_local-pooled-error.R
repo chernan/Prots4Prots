@@ -5,7 +5,7 @@
 #' 
 #' @concepts Significance
 #' 
-#' @section Introduction.
+#' @section Introduction:
 #' This method was developped by Nitin Jain, and published in Bioinformatics in 
 #' 2003. It tests difference between medians relative to the local intensity 
 #' variability. 
@@ -28,7 +28,7 @@
 #' For using LPE under multiple conditions, use the HEM library.
 #' http://www.bioconductor.org/packages/release/bioc/html/HEM.html
 #' 
-#' @section References.
+#' @section References:
 #' Local-pooled-error test for identifying differentially expressed genes with 
 #' a small number of replicated microarrays
 #' Nitin Jain, Jayant Thatte, Thomas Braciale, Klaus Ley, Michael O'Connell, 

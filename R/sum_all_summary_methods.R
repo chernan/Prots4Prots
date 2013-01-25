@@ -5,7 +5,7 @@
 #' 
 #' @concepts Summarization
 #' 
-#' @section Introduction.
+#' @section Introduction:
 #' Summarization is the process of summarizing peptide information up to the 
 #' protein level.
 #' The protein groups have already been computed by identification tools, 

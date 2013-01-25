@@ -5,7 +5,7 @@
 #' 
 #' @concepts Quality_check
 #' 
-#' @section Installation of latticeExtra.
+#' @section Installation of latticeExtra:
 #' Download latticeExtra
 #' sudo R CMD INSTALL latticeExtra_0.6-24.tar.gz
 #' 

@@ -5,14 +5,14 @@
 #' 
 #' @concepts Multiple_testing_correction
 #' 
-#' @section Introduction.
+#' @section Introduction:
 #' The Benjamini-Hochberg procedure controls the false discovery rate, the 
 #' expected proportion of false discoveries amongst the positive discoveries 
 #' (rejected null hypotheses). This procedure, as well as the Benjamini-
 #' Yekutieli, is less stringent than the family-wise error rate, making it 
 #' more powerful than other multiple testing correction approaches. 
 #' 
-#' @section References.
+#' @section References:
 #' 
 #' Benjamini, Y., & Hochberg, Y. (1995). 
 #' Controlling the false discovery rate: a practical and powerful approach to multiple testing. 

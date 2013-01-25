@@ -12,7 +12,7 @@
 #' \enumerate{
 #'   \item Loading data.
 #'   \item Pre-processing
-#'     \itemize {
+#'     \itemize{
 #'       \item Normalization
 #'       \item Treating missing values
 #'       \item (Summarization)

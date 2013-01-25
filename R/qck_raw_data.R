@@ -5,9 +5,10 @@
 #' 
 #' @concepts Quality_check
 #' 
-#' @section Introduction.
+#' @section Introduction:
 #' Data to be treated need to be checked for integrity.
 #' 
+NULL
 
 #' @title Report QC on raw data
 #' 

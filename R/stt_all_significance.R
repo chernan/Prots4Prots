@@ -5,7 +5,7 @@
 #' 
 #' @concepts Significance
 #' 
-#' @section Introduction.
+#' @section Introduction:
 #' Testing a null hypothesis which is "each protein is not differencially 
 #' expressed". 
 #' The obtained p-values are probabilities of an observation (or more extreme 
@@ -18,7 +18,7 @@
 #' criticism. Modern statistics propose good alternatives including Bayesian 
 #' statistics (see Limma package).
 #' 
-#' @section References.
+#' @section References:
 #' 
 #' Johnson, D. (1999). 
 #' The Insignificance of Statistical Significance Testing. 
@@ -28,7 +28,7 @@
 #' Erceg-Hurn, D. M., & Mirosevich, V. M. (2008). 
 #' Modern robust statistical methods: an easy way to maximize the accuracy and 
 #' power of your research. 
-#' The American psychologist, 63(7), 591–601. 
+#' The American psychologist, 63(7), 591-601. 
 #' doi:10.1037/0003-066X.63.7.591
 #' 
 #' Jeanmougin, M., De Reynies, A., Marisa, L., Paccard, C., Nuel, G., & 

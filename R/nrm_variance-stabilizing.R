@@ -6,14 +6,14 @@
 #' 
 #' @concepts Normalization
 #' 
-#' @section Introduction.
+#' @section Introduction:
 #' Usage of VSN was suggested by Karp (2010) but its usage is not common as the 
 #' scale change can make the fold change ratio difficult to interpret, and 
 #' applying it can lead to negative values. This is well summarized in 
 #' Mahoney (2011) :
 #' "Karp et al proposed a variance stabilizing transformation to stabilize the 
 #' variance across all proteins[15]. This has been applied to other data types 
-#' such as mRNA and miRNA[33–35]. We prefer use of WLS for the following reasons: 
+#' such as mRNA and miRNA[33-35]. We prefer use of WLS for the following reasons: 
 #' 1) constant variance is generally not expected across all proteins in a study; 
 #' 2) downstream statistical analyses assume equal variances between groups 
 #' within a protein but do not assume constant variance across all proteins; 
@@ -30,7 +30,7 @@
 #' if the fraction of differentially expressed genes is not that large.
 #' From Bioconductor case studies.
 #' 
-#' @section References.
+#' @section References:
 #' 
 #' Huber, W., Von Heydebreck, A., Sultmann, H., Poustka, A., & Vingron, M. (2002). 
 #' Variance stabilization applied to microarray data calibration and to the 
