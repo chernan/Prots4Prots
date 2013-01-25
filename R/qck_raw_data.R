@@ -1,5 +1,11 @@
-#' Quality check
+#' @name QualityCheck
+#' @title Quality check
+#' @description
+#' Quality check of raw data.
 #' 
+#' @concepts Quality_check
+#' 
+#' @section Introduction.
 #' Data to be treated need to be checked for integrity.
 #' 
 

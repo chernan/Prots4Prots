@@ -1,9 +1,16 @@
-#' Normalization
+#' @name Normalization
+#' @title Normalization methods
+#' @description 
+#' List of normalization methods
 #' 
+#' @concepts Normalization
+#' 
+#' @section Introduction.
 #' Normalization is the process of making different samples comparable by 
 #' adjusting them to a common scale.
 #' 
-#' @seealso http://en.wikipedia.org/wiki/Normalization_%28statistics%29
+#' @section References.
+#' http://en.wikipedia.org/wiki/Normalization_%28statistics%29
 #' 
 sapply(
     list.files(file.path(getwd(), 'R'), 

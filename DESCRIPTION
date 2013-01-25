@@ -2,9 +2,47 @@ Package: Prots4Prots
 Title: Protocols for Proteomics
 Version: 0.0.1
 Author: Celine Hernandez
-Description: A package comparing different statistical tools in order to find differentially expressed proteins. The R folder contains the toolbox, tools brought together by topic. The inst folder contains use cases of the toolbox.
+Description: A package comparing different statistical tools in order to find
+    differentially expressed proteins. The R folder contains the toolbox, tools
+    brought together by topic. The inst folder contains use cases of the
+    toolbox.
 Maintainer: Celine Hernandez <Celine.Hernandez@unil.ch>
-License: 
-Depends: R (>= 2.15), Biobase, knitr, markdown, ggplot2, lattice, latticeExtra, plyr, vsn, LPE, limma, samr 
-Suggests: RUnit, BiocGenerics
+License: GPL (>= 2)
+Depends:
+    R (>= 2.15),
+    Biobase,
+    knitr,
+    markdown,
+    ggplot2,
+    lattice,
+    latticeExtra,
+    plyr,
+    vsn,
+    LPE,
+    limma,
+    samr
+Suggests:
+    RUnit,
+    BiocGenerics
 Packaged: 
+Collate:
+    'Prots4Prots-package.R'
+    'mtc_all_multiple_testing_correctionl.R'
+    'mtc_benjamini-hochberg.R'
+    'mtc_report_tools.R'
+    'nrm_all_normalization.R'
+    'nrm_inter-quartile-range.R'
+    'nrm_logarithm2.R'
+    'nrm_report_tools.R'
+    'nrm_variance-stabilizing.R'
+    'qck_raw_data.R'
+    'qck_report_tools.R'
+    'rep_knitr.R'
+    'stt_all_significance.R'
+    'stt_limma.R'
+    'stt_local-pooled-error.R'
+    'stt_report_tools.R'
+    'stt_samr.R'
+    'stt_t-test.R'
+    'sum_all_summary_methods.R'
+    'sum_summary_methods.R'

@@ -1,6 +1,11 @@
-#' InterQuartile Range Normalization
+#' @name InterQuartileRange
+#' @title InterQuartile Range Normalization
+#' @description 
+#' InterQuartile Range Normalization.
 #' 
+#' @concepts Normalization
 #' 
+#' @section Introduction.
 #' "The median and interquartile range are computed for the set of all gene 
 #' expression values for each array. The median of the medians and the median 
 #' of the IQRs are calculated. For each array, values are initially adjusted 
@@ -17,14 +22,14 @@
 #' NB: there are many methods to compute a percentile (other than the median) 
 #' and they may not give the same result...
 #' 
-#' Reference :
+#' @section References.
 #' 
 #' Hyndman, R. J., & Fan, Y. (1996). 
 #' Sample quantiles in statistical packages. 
 #' The American Statistician, 50(4), 361–365.
 #' Retrieved from http://www.tandfonline.com/doi/abs/10.1080/00031305.1996.10473566
 #' 
-
+#' @import LPE
 # set.seed(0)
 library(LPE)
 

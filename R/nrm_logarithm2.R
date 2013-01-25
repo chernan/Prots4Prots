@@ -1,5 +1,11 @@
-#' Log2 transformation
+#' @name Log2
+#' @title Log2 transformation
+#' @description
+#' Log2 transformation.
 #' 
+#' @concepts Normalization
+#' 
+#' @section Introduction.
 #' Transforms data to convert them to a linear scale.
 #' 
 

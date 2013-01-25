@@ -1,8 +1,12 @@
-#' VSN Variance Stabilizing Method
+#' @name VSN
+#' @title Variance Stabilizing Normalization
+#' @description
+#' Variance Stabilizing Normalization (VSN) is based on a generalized logarithm 
+#' transformation and aims at stabilizing variance inside microarray data.
 #' 
-#' VSN is based on a generalized logarithm transformation and aims at 
-#' stabilizing variance of microarray data.
+#' @concepts Normalization
 #' 
+#' @section Introduction.
 #' Usage of VSN was suggested by Karp (2010) but its usage is not common as the 
 #' scale change can make the fold change ratio difficult to interpret, and 
 #' applying it can lead to negative values. This is well summarized in 
@@ -26,7 +30,7 @@
 #' if the fraction of differentially expressed genes is not that large.
 #' From Bioconductor case studies.
 #' 
-#' References:
+#' @section References.
 #' 
 #' Huber, W., Von Heydebreck, A., Sultmann, H., Poustka, A., & Vingron, M. (2002). 
 #' Variance stabilization applied to microarray data calibration and to the 
@@ -47,8 +51,9 @@
 #' Journal of proteome research, 10(9), 4325-33. 
 #' doi:10.1021/pr2001308
 #' 
-#' @seealso http://bioinfo.cnio.es/files/training/Microarray_Course/3_UBio_Normalization_Theory.pdf
+#' http://bioinfo.cnio.es/files/training/Microarray_Course/3_UBio_Normalization_Theory.pdf
 #' 
+#' @import vsn
 
 # set.seed(0)
 library(vsn)

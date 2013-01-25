@@ -1,6 +1,11 @@
+#' @name Limma
+#' @title Linear models for microarray data
+#' @description
 #' Linear models for microarray data (LIMMA)
 #' 
+#' @concepts Significance
 #' 
+#' @section Introduction.
 #' Similarly to a t-test, Limma tests difference between means relative to the 
 #' variability. But it uses Bayesian statistic to adjust variability estimation.
 #' Bayesian statistics can be understood as a horse race bet: each horse doesn't 
@@ -25,6 +30,7 @@
 #' for converting between them."
 #' From Johnson, D. (1999)
 #' 
+#' @section References.
 #' LIMMA (Smyth G. K., 2005) is the reference package to analyse microarray data. 
 #' Because of evident similarity between microarray data and quantitation data, 
 #' this tool can also be applied.
@@ -45,6 +51,8 @@
 #' The journal of wildlife management, 63(3), 763. 
 #' doi:10.2307/3802789
 #' 
+#' @import limma
+library("limma")
 
 # #Print-tip loess normalization:
 # MA <- normalizeWithinArrays(RG)
@@ -54,8 +62,6 @@
 # #Apply empirical Bayes smoothing to the standard errors.
 # fit <- eBayes(fit)
 
-# set.seed(0)
-library("limma")
 
 #' @title Apply Limma method
 #' 

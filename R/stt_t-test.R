@@ -1,5 +1,11 @@
-#' t-test
+#' @name tTest
+#' @title t-test
+#' @description 
+#' Student's or Welsch's t-test.
 #' 
+#' @concepts Significance
+#' 
+#' @section Introduction.
 #' A t statistic is the distance between two data sets in units of standard 
 #' deviation.
 #' This test has low statistical power when applied to small sample size.
@@ -13,12 +19,7 @@
 #' implies low statistical power.
 #' Consequently, the efficacy of a t-test along with the importance of variance 
 #' modeling have been seriously called into question."
-#'  Should We Abandon the t-Test in the Analysis of Gene Expression Microarray 
-#'  Data: A Comparison of Variance Modeling Strategies
-#'  Marine Jeanmougin, Aurelien de Reynies, Laetitia Marisa, Caroline Paccard, 
-#'  Gregory Nuel, Mickael Guedj
-#'  http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0012336
-#'  PLOS one 
+#' Jeanmougin et al. (2010)
 #' 
 #' Student's t-test relies on certain assumptions. Welch's t-test can be used 
 #' as an alternative (see paragraph : 2/ 'Homoscedasticity, or equality of 
@@ -28,7 +29,7 @@
 #' A comparison between paired samples has greater power, because of a similar 
 #' noise factor in paired samples.
 #' 
-#' Assumptions
+#' @section Assumptions.
 #' 
 #' 1/ Normality
 #' 
@@ -75,14 +76,23 @@
 #' NB: use of the t-test requires no citation. But it should be mentionned 
 #' whether Student's or Welch's test was used.
 #' 
+#' @section References.
+#' 
+#' Should we abandon the t-test in the analysis of gene expression microarray 
+#' data: a comparison of variance modeling strategies. 
+#' Jeanmougin, M., De Reynies, A., Marisa, L., Paccard, C., Nuel, G., & 
+#' Guedj, M. (2010). 
+#' PloS one, 5(9), e12336. 
+#' doi:10.1371/journal.pone.0012336
+#' 
 #' Modern robust statistical methods: an easy way to maximize the accuracy and 
 #' power of your research. 
 #' Erceg-Hurn, D. M., & Mirosevich, V. M. (2008). 
 #' The American psychologist, 63(7), 591–601. 
 #' doi:10.1037/0003-066X.63.7.591
-
-#' @seealso http://en.wikipedia.org/wiki/Student%27s_t-test
-
+#' 
+#' http://en.wikipedia.org/wiki/Student%27s_t-test
+NULL
 
 #' @title Wrapper to R Base t.test()
 #' 

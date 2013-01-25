@@ -1,22 +1,26 @@
-#' Significance Analysis of Microarray data
+#' @name SAM
+#' @title Significance Analysis of Microarray data
+#' @description
+#' Significance Analysis of Microarray data (SAM)
 #' 
+#' @concepts Significance
+#' 
+#' @section Introduction.
 #' p-values are computed by bootstraping.
 #' 
+#' @section References.
 #' Tusher, V., Tibshirani, R., & Chu, G. (2001). 
 #' Significance analysis of microarrays applied to the ionizing radiation response. 
 #' Proceedings of the National Academy of Sciences of the United States of America, 98(9), 5116-21. 
 #' doi:10.1073/pnas.091062498
 #' 
-#' How to install:
+#' @section Installation.
 #' source("http://bioconductor.org/biocLite.R")
 #' biocLite("impute")
 #' install.packages("samr")
 #' 
-
-
-# set.seed(0)
+#' @import samr
 library("samr")
-
 
 
 #' @title Apply SAM method

@@ -1,5 +1,16 @@
+#' @name QCKReportTools
+#' @title Report tools for quality check.
+#' @description
+#' Visualization tools for quality check reports.
+#' 
+#' @concepts Quality_check
+#' 
+#' @section Installation of latticeExtra.
 #' Download latticeExtra
 #' sudo R CMD INSTALL latticeExtra_0.6-24.tar.gz
+#' 
+#' @import latticeExtra
+#' @import ggplot2
 library(latticeExtra)
 library("ggplot2")
 

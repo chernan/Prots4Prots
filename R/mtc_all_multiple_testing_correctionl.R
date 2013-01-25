@@ -1,11 +1,18 @@
-#' Multiple testing correction
+#' @name MultipleTestingCorrection
+#' @title Multiple testing correction.
+#' @description
+#' List of Multiple testing correction methods.
 #' 
+#' @concepts Multiple_testing_correction
+#' 
+#' @section Introduction.
 #' When testing multiple times a null hypothesis, incorrect rejection is more 
 #' likely to occur when considering all tests together. Several methods have 
 #' been developped in order to correct this problem and maintain FDR to an 
 #' acceptable level.
 #' 
-#' @seealso http://en.wikipedia.org/wiki/Multiple_comparisons
+#' @section References.
+#' http://en.wikipedia.org/wiki/Multiple_comparisons
 #' 
 sapply(
     list.files(file.path(getwd(), 'R'), 

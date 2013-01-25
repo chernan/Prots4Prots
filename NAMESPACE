@@ -1,1 +1,6 @@
-exportPattern("^[[:alpha:]]+")
+import(ggplot2)
+import(latticeExtra)
+import(limma)
+import(LPE)
+import(samr)
+import(vsn)

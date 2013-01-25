@@ -1,5 +1,11 @@
-#' Significance tests
+#' @name SignificanceTests
+#' @title Significance tests
+#' @description 
+#' List of Significance tests
 #' 
+#' @concepts Significance
+#' 
+#' @section Introduction.
 #' Testing a null hypothesis which is "each protein is not differencially 
 #' expressed". 
 #' The obtained p-values are probabilities of an observation (or more extreme 
@@ -12,7 +18,7 @@
 #' criticism. Modern statistics propose good alternatives including Bayesian 
 #' statistics (see Limma package).
 #' 
-#' A few interesting references:
+#' @section References.
 #' 
 #' Johnson, D. (1999). 
 #' The Insignificance of Statistical Significance Testing. 
@@ -32,9 +38,9 @@
 #' PloS one, 5(9), e12336. 
 #' doi:10.1371/journal.pone.0012336
 #' 
-#' @seealso http://en.wikipedia.org/wiki/Statistical_hypothesis_testing
-#' @seealso http://en.wikipedia.org/wiki/Statistical_hypothesis_testing#Controversy
-#' @seealso http://cseweb.ucsd.edu/users/goguen/courses/275f00/stat.html
+#' http://en.wikipedia.org/wiki/Statistical_hypothesis_testing
+#' http://en.wikipedia.org/wiki/Statistical_hypothesis_testing#Controversy
+#' http://cseweb.ucsd.edu/users/goguen/courses/275f00/stat.html
 #' 
 sapply(
     list.files(file.path(getwd(), 'R'), 

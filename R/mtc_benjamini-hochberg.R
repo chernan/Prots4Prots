@@ -1,19 +1,29 @@
-#' Benjamini-Hochberg procedure
-#' 
+#' @name Benjamini-Hochberg
+#' @title Benjamini-Hochberg procedure
+#' @description 
 #' Benjamini-Hochberg procedure to control FDR.
 #' 
+#' @concepts Multiple_testing_correction
+#' 
+#' @section Introduction.
 #' The Benjamini-Hochberg procedure controls the false discovery rate, the 
 #' expected proportion of false discoveries amongst the positive discoveries 
 #' (rejected null hypotheses). This procedure, as well as the Benjamini-
 #' Yekutieli, is less stringent than the family-wise error rate, making it 
 #' more powerful than other multiple testing correction approaches. 
 #' 
-#' @references http://en.wikipedia.org/wiki/False_discovery_rate#Controlling_procedures
-#' @references "Controlling the false discovery rate: a practical and powerful 
-#' approach to multiple testing" by Yoav Benjamini & Yosef Hochberg (1995)
+#' @section References.
+#' 
+#' Benjamini, Y., & Hochberg, Y. (1995). 
+#' Controlling the false discovery rate: a practical and powerful approach to multiple testing. 
+#' Journal of the Royal Statistical Society. Series B (Methodological), 57(1), 289-300.
+#' Retrieved from http://www.jstor.org/stable/10.2307/2346101',
+#' 
+#' http://en.wikipedia.org/wiki/False_discovery_rate#Controlling_procedures
+#' 
+#' @import LPE
+library(LPE)
 
-
-library("LPE")
 
 #' @title Wrapper to R Base p.adjust()
 #' 

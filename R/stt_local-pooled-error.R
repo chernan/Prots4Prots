@@ -1,5 +1,11 @@
-#' Local-pooled-error
+#' @name LocalPooledError
+#' @title Local-pooled-error
+#' @description
+#' Local-pooled-error (LPE)
 #' 
+#' @concepts Significance
+#' 
+#' @section Introduction.
 #' This method was developped by Nitin Jain, and published in Bioinformatics in 
 #' 2003. It tests difference between medians relative to the local intensity 
 #' variability. 
@@ -22,7 +28,7 @@
 #' For using LPE under multiple conditions, use the HEM library.
 #' http://www.bioconductor.org/packages/release/bioc/html/HEM.html
 #' 
-#' References:
+#' @section References.
 #' Local-pooled-error test for identifying differentially expressed genes with 
 #' a small number of replicated microarrays
 #' Nitin Jain, Jayant Thatte, Thomas Braciale, Klaus Ley, Michael O'Connell, 
@@ -41,7 +47,7 @@
 #' BMC Bioinformatics 2009, 10 (45)
 #' doi:10.1186/1471-2105-10-45
 #' 
-
+#' @import LPE
 library(LPE)
 
 
