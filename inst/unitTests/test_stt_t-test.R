@@ -34,7 +34,7 @@ test_fun_applyTTests <- function() {
     
     ## Computation of p-values
     checkEqualsNumeric(
-        applyTTests(normalData1, normalData2, 1:500, 0.05, FALSE)$pval,
+        applyTTests(normalData1, normalData2, 0.05, FALSE)$pval,
         sapply(1:500, 
                FUN = function(x) { 
                    return(t.test(normalData1[x, ], normalData2[x, ])$p.value)
@@ -44,7 +44,7 @@ test_fun_applyTTests <- function() {
     
     ## Computation of fold changes - non paired
     checkEqualsNumeric(
-        applyTTests(normalData1, normalData2, 1:500, 0.05, FALSE)$foldchange,
+        applyTTests(normalData1, normalData2, 0.05, FALSE)$foldchange,
         sapply(1:500, 
                FUN = function(x) { 
                    tTest <- t.test(normalData1[x, ], normalData2[x, ], 
@@ -56,7 +56,7 @@ test_fun_applyTTests <- function() {
     
     ## Computation of fold changes - paired
     checkEqualsNumeric(
-        applyTTests(normalData1, normalData2, 1:500, 0.05, TRUE)$foldchange,
+        applyTTests(normalData1, normalData2, 0.05, TRUE)$foldchange,
         sapply(1:500, 
                FUN = function(x) { 
                    tTest <- t.test(normalData1[x, ], normalData2[x, ], 
