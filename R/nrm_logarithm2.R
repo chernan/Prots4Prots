@@ -20,6 +20,7 @@ NULL
 #'  
 #' @param dataNotNorm Data to be normalized.
 #' @return A dataframe containing normlized data.
+#' @export
 applyLog2 <- function(dataNotNorm) {
     
     dataNormalized <- log(dataNotNorm, base=2)

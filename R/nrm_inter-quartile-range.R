@@ -43,6 +43,7 @@ NULL
 #'  
 #' @param dataNotNorm Data to be normalized.
 #' @return A dataframe containing normlized data.
+#' @export
 applyIqrFromLpe <- function(dataNotNorm) {
     
     dataNormalized <- preprocess(

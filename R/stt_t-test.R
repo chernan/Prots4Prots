@@ -110,6 +110,7 @@ NULL
 #' @param isPaired If the samples are paired (ex: sample 1,2,3 in condition 1 vs 
 #'  sample 1,2,3 in condition 2)
 #' @return The test result object as described in R documentation
+#' @export
 apply2SampleTTest <- function(xExp, xControl, confidence=0.95, 
                               isHomoscedastic=FALSE, isPaired=FALSE) {
     
@@ -141,6 +142,7 @@ apply2SampleTTest <- function(xExp, xControl, confidence=0.95,
 #' @return A data frame with two columns "pval" p-value of the t-test, 
 #'  and "foldchange" computed as either the difference between the means 
 #'  (non-paired) or the mean of the differences (paired))
+#' @export
 applyTTests <- function(experiment, control, significance, isPaired) {
     
     nbRow <- nrow(experiment)

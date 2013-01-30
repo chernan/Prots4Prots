@@ -67,6 +67,7 @@ NULL
 #'  
 #' @param dataNotNorm Data to be normalized.
 #' @return A dataframe containing normlized data.
+#' @export
 applyVSN09 <- function(dataNotNorm) {
 
     dataNormalized <- data.frame(
@@ -90,6 +91,7 @@ applyVSN09 <- function(dataNotNorm) {
 #'  
 #' @param dataNotNorm Data to be normalized.
 #' @return A dataframe containing normlized data.
+#' @export
 applyVSN05 <- function(dataNotNorm) {
     
     dataNormalized <- data.frame(

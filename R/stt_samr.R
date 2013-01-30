@@ -35,6 +35,7 @@ NULL
 #' @param control Dataset for control (condition 2).
 #' @param thresholdPVal Desired FDR.
 #' @return A list containing p-values, and the output object of SAM().
+#' @export
 applySam <- function(experiment, control, thresholdPVal) {
     
     data <- data.frame(control, experiment)
@@ -73,6 +74,7 @@ applySam <- function(experiment, control, thresholdPVal) {
 #' @param control Dataset for control (condition 2).
 #' @param thresholdPVal Desired FDR.
 #' @return A list containing p-values, and the output object of SAM().
+#' @export
 applyPairedSam <- function(experiment, control, thresholdPVal) {
     
     data <- as.matrix(data.frame(control, experiment))
