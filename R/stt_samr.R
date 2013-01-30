@@ -20,8 +20,8 @@
 #' install.packages("samr")
 #' 
 #' @import samr
-library("samr")
-
+# library("samr")
+NULL
 
 #' @title Apply SAM method
 #' 

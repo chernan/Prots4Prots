@@ -1,7 +1,7 @@
 #' @import plyr
 #' @import Biobase
-library(plyr)
-library(Biobase)
+# library(plyr)
+# library(Biobase)
 
 #' @title Report summarization
 #' 

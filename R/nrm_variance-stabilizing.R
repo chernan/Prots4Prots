@@ -54,10 +54,8 @@
 #' http://bioinfo.cnio.es/files/training/Microarray_Course/3_UBio_Normalization_Theory.pdf
 #' 
 #' @import vsn
-
-# set.seed(0)
-library(vsn)
-
+# library(vsn)
+NULL
 
 #' @title Apply variance-stabilizing normalization.
 #' 

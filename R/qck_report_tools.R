@@ -9,10 +9,12 @@
 #' Download latticeExtra
 #' sudo R CMD INSTALL latticeExtra_0.6-24.tar.gz
 #' 
-#' @import latticeExtra
+#' @importFrom lattice levelplot
+#' @importFrom latticeExtra dendrogramGrob
 #' @import ggplot2
-library(latticeExtra)
-library("ggplot2")
+# library(latticeExtra)
+# library("ggplot2")
+NULL
 
 ## -----------------------------------------------------------------------------
 ## Tests / plots used in the report

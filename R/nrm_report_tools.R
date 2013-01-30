@@ -1,3 +1,5 @@
+#' @import ggplot2
+# library("ggplot2")
 
 #' @title Report results of normalization
 #' 
@@ -86,7 +88,6 @@ allTestsNormalizationRmd <- function(matrixData,
 #' @param matrixData A matrix containing the intensities (log'ed)
 #' @return The plot to be printed.
 displayNormalizationViolin <- function(matrixData) {
-    library("ggplot2")
     
     # Stack data by pasting column after column
     dataStacked <- c(matrixData)

@@ -52,7 +52,8 @@
 #' doi:10.2307/3802789
 #' 
 #' @import limma
-library("limma")
+# library("limma")
+NULL
 
 # #Print-tip loess normalization:
 # MA <- normalizeWithinArrays(RG)

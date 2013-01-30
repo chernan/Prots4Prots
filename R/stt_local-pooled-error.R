@@ -48,8 +48,8 @@
 #' doi:10.1186/1471-2105-10-45
 #' 
 #' @import LPE
-library(LPE)
-
+# library(LPE)
+NULL
 
 #' @title Apply LPE method
 #' 

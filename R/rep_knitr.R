@@ -1,5 +1,4 @@
-#' @import knitr
-library(knitr)
+# library(knitr)
 
 #' @title Generate HTML report with knitr.
 #' 
@@ -12,6 +11,8 @@ library(knitr)
 #' 
 #' @references http://yihui.name/knitr/
 #' @keywords knitr
+#' @import knitr
+#' @importFrom markdown markdownToHTML
 #' 
 #' @param outputLabel Label included in the name of the output file.
 #' @param outputFileNameRmd Input Rmd file.

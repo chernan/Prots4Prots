@@ -22,8 +22,8 @@
 #' http://en.wikipedia.org/wiki/False_discovery_rate#Controlling_procedures
 #' 
 #' @import LPE
-library(LPE)
-
+# library(LPE)
+NULL
 
 #' @title Wrapper to R Base p.adjust()
 #' 

@@ -30,8 +30,8 @@
 #' Retrieved from http://www.tandfonline.com/doi/abs/10.1080/00031305.1996.10473566
 #' 
 #' @import LPE
-# set.seed(0)
-library(LPE)
+# library(LPE)
+NULL
 
 #' @title Apply interquartile range normalization.
 #' 
