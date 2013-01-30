@@ -3,7 +3,7 @@
 #' @description
 #' Visualization tools for quality check reports.
 #' 
-#' @concepts Quality_check
+#' @keywords Quality_check
 #' 
 #' @section Installation of latticeExtra:
 #' Download latticeExtra

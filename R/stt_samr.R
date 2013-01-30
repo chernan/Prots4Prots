@@ -3,7 +3,7 @@
 #' @description
 #' Significance Analysis of Microarray data (SAM)
 #' 
-#' @concepts Significance
+#' @keywords Significance
 #' 
 #' @section Introduction:
 #' p-values are computed by bootstraping.

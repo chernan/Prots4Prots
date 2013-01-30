@@ -3,7 +3,7 @@
 #' @description 
 #' Benjamini-Hochberg procedure to control FDR.
 #' 
-#' @concepts Multiple_testing_correction
+#' @keywords Multiple_testing_correction
 #' 
 #' @section Introduction:
 #' The Benjamini-Hochberg procedure controls the false discovery rate, the 

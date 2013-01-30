@@ -3,7 +3,7 @@
 #' @description
 #' Linear models for microarray data (LIMMA)
 #' 
-#' @concepts Significance
+#' @keywords Significance
 #' 
 #' @section Introduction:
 #' Similarly to a t-test, Limma tests difference between means relative to the 

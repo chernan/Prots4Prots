@@ -3,7 +3,7 @@
 #' @description
 #' List of Multiple testing correction methods.
 #' 
-#' @concepts Multiple_testing_correction
+#' @keywords Multiple_testing_correction
 #' 
 #' @section Introduction:
 #' When testing multiple times a null hypothesis, incorrect rejection is more 

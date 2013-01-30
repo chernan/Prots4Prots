@@ -3,7 +3,7 @@
 #' @description 
 #' Student's or Welsch's t-test.
 #' 
-#' @concepts Significance
+#' @keywords Significance
 #' 
 #' @section Introduction:
 #' A t statistic is the distance between two data sets in units of standard 

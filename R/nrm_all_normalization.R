@@ -3,7 +3,7 @@
 #' @description 
 #' List of normalization methods
 #' 
-#' @concepts Normalization
+#' @keywords Normalization
 #' 
 #' @section Introduction:
 #' Normalization is the process of making different samples comparable by 

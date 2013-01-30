@@ -3,7 +3,7 @@
 #' @description
 #' Local-pooled-error (LPE)
 #' 
-#' @concepts Significance
+#' @keywords Significance
 #' 
 #' @section Introduction:
 #' This method was developped by Nitin Jain, and published in Bioinformatics in 

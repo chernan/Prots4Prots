@@ -3,7 +3,7 @@
 #' @description
 #' Log2 transformation.
 #' 
-#' @concepts Normalization
+#' @keywords Normalization
 #' 
 #' @section Introduction:
 #' Transforms data to convert them to a linear scale.

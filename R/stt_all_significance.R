@@ -3,7 +3,7 @@
 #' @description 
 #' List of Significance tests
 #' 
-#' @concepts Significance
+#' @keywords Significance
 #' 
 #' @section Introduction:
 #' Testing a null hypothesis which is "each protein is not differencially 

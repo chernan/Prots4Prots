@@ -3,7 +3,7 @@
 #' @description
 #' Quality check of raw data.
 #' 
-#' @concepts Quality_check
+#' @keywords Quality_check
 #' 
 #' @section Introduction:
 #' Data to be treated need to be checked for integrity.

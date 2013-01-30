@@ -4,7 +4,7 @@
 #' Variance Stabilizing Normalization (VSN) is based on a generalized logarithm 
 #' transformation and aims at stabilizing variance inside microarray data.
 #' 
-#' @concepts Normalization
+#' @keywords Normalization
 #' 
 #' @section Introduction:
 #' Usage of VSN was suggested by Karp (2010) but its usage is not common as the 

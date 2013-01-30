@@ -3,7 +3,7 @@
 #' @description
 #' List of Summarization methods.
 #' 
-#' @concepts Summarization
+#' @keywords Summarization
 #' 
 #' @section Introduction:
 #' Summarization is the process of summarizing peptide information up to the 

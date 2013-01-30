@@ -3,7 +3,7 @@
 #' @description 
 #' InterQuartile Range Normalization.
 #' 
-#' @concepts Normalization
+#' @keywords Normalization
 #' 
 #' @section Introduction:
 #' "The median and interquartile range are computed for the set of all gene 
