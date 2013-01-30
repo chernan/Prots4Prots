@@ -1,15 +1,15 @@
 Package: Prots4Prots
 Title: Protocols for Proteomics
 Version: 0.0.1
-Author: Celine Hernandez
+Author: Celine Hernandez <celine.hernandez@isb-sib.ch>
 Description: A package comparing different statistical tools in order to find
     differentially expressed proteins. The R folder contains the toolbox, tools
     brought together by topic. The inst folder contains use cases of the
     toolbox.
-Maintainer: Celine Hernandez <Celine.Hernandez@unil.ch>
+Maintainer: Celine Hernandez <Celine.Hernandez@isb-sib.ch>
 License: GPL (>= 2)
-Depends:
-    R (>= 2.15),
+Imports:
+    BiocGenerics,
     Biobase,
     knitr,
     markdown,
@@ -21,9 +21,10 @@ Depends:
     LPE,
     limma,
     samr
+Depends:
+    R (>= 2.15)
 Suggests:
-    RUnit,
-    BiocGenerics
+    RUnit
 Packaged: 
 Collate:
     'Prots4Prots-package.R'
