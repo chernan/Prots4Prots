@@ -54,6 +54,7 @@ testPackage <- function (pkgname, subdir = "unitTests",
 
 library(RUnit)
 
+set.seed(0)
 testPackage(pkgname="Prots4Prots", subdir = "unitTests", 
             pattern="^test_nrm.+\\.R",
             patternFun="^test_fun.+")
