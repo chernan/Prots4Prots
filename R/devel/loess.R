@@ -37,11 +37,10 @@ Normalization
 
 ')
 
-    cat("Normalization was achieved using \"loess\" method available in stats package of base R distribution (`r version$version.string`).
+    cat("Normalization was achieved using \"loess\" method available in stats package of base R distribution (`r version$version.string`).")
     
-    
-    all_tests_normalization_Rmd(dataset.norm, title="LOESS Normalization", outfolder=output_folder_temp)
-    
+    all_tests_normalization_Rmd(dataset.norm, title="LOESS_Normalization", outfolder=output_folder_temp)
+
     cat('
 >
 > Base stats R package (loess function).
