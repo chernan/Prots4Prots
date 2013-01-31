@@ -51,7 +51,7 @@
 #' The journal of wildlife management, 63(3), 763. 
 #' doi:10.2307/3802789
 #' 
-#' @import limma
+#' @importFrom limma lmFit eBayes topTable
 # library("limma")
 NULL
 

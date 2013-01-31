@@ -35,6 +35,7 @@ NULL
 #' 
 #' @param pValues a vector/data.frame slice containing the sorted p-values
 #' @return a vector of corrected p-values
+#' @export
 rAdjustBH <- function(pValues) {
     
     fdrBH <- p.adjust(pValues, "BH")
@@ -52,6 +53,7 @@ rAdjustBH <- function(pValues) {
 #' 
 #' @param lpeVal A lpe object, output of a Local-Pooled-error method
 #' @return a table of thresholds for a set of pre-defined FDR values
+#' @export
 lpeAdjustBH <- function(lpeVal) {
 
     

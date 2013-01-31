@@ -1,5 +1,6 @@
 
 test_fun_applyLimma <- function() {
+    library(limma)
     
     normalData1 <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
     normalData2 <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
@@ -25,6 +26,7 @@ test_fun_applyLimma <- function() {
 }
 
 test_fun_applyPairedLimma <- function() {
+    library(limma)
     
     normalData1 <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
     normalData2 <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))

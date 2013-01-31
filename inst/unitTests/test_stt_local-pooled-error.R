@@ -1,5 +1,6 @@
 
 test_fun_applyLpeMethod <- function() {
+    library(LPE)
     
     ## This test doesn't work when run from test suite only! 
     # Error in smooth.spline(base.var.adap[, 1], base.var.adap[, 2], df = df) : 

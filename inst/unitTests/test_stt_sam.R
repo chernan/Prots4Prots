@@ -1,5 +1,6 @@
 
 test_fun_applySam <- function() {
+    library(samr)
     
     control <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
     experiment <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
@@ -11,27 +12,28 @@ test_fun_applySam <- function() {
     design <- c(rep(1, ncol(control)), rep(2, ncol(experiment)))
     
     capture.output(
-    samFit <- SAM(x=data, y=design, 
-                  logged2=TRUE, 
-                  resp.type="Two class unpaired", fdr.output=0.05,
-                  genenames=rowNames, geneid=rowNames)
+        samFit <- SAM(x=data, y=design, 
+                      logged2=TRUE, 
+                      resp.type="Two class unpaired", fdr.output=0.05,
+                      genenames=rowNames, geneid=rowNames)
     )
     capture.output(
-    pValues <- samr.pvalues.from.perms(samFit$samr.obj$tt, 
-                                       samFit$samr.obj$ttstar)
-)
+        pValues <- samr.pvalues.from.perms(samFit$samr.obj$tt, 
+                                           samFit$samr.obj$ttstar)
+    )
     
     ## As SAM applies randomisation, p-values are never exactly the same...
     checkEqualsNumeric(
         applySam(experiment, control, 0.05)$p.values,
         pValues,
-        tolerance=0.005
+        tolerance=0.007
     )
     
 }
 
 test_fun_applyPairedSam <- function() {
-    
+    library(samr)
+        
     control <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
     experiment <- replicate(3, rnorm(n=500, mean=11.5, sd=2.2))
     
@@ -57,7 +59,7 @@ test_fun_applyPairedSam <- function() {
     checkEqualsNumeric(
         applyPairedSam(experiment, control, 0.05)$p.values,
         pValues,
-        tolerance=0.005
+        tolerance=0.007
     )
     
 }
