@@ -1,0 +1,115 @@
+Compare similarity between profiles of significant proteins
+======================================================================
+    
+```{r setup, echo=FALSE}
+suppressPackageStartupMessages(library(Prots4Prots))
+
+#To avoid transformation of small numbers into scientific notation causing incompatibilities with further sorting methods (googleVis by ex.)
+# oldScipen <- options(scipen=500)
+```
+
+
+First we set up which dataset we want to analyze.
+```{r getdataset}
+basedir <- '/home/chernan/Workspace/testRpackage2/Prots4Prots/inst/protocols/quantitation/Label-free/'
+setwd(basedir)
+suppressPackageStartupMessages(source("./load_data.R"))
+dataset_list <- getDatasetDpulex246daysDMSOM4pg()
+
+threshold_pval <- 0.05
+
+methods.to.report <- list(
+    Normalization = c("vsn05"), 
+    Summary = c("NonA"), 
+    Significance = c("lpe"), 
+    Dataset = c("dpulex2dDMSOM4", "dpulex4dDMSOM4", "dpulex6dDMSOM4")
+)
+
+```
+
+For each triplet normalization+summarization+statistic, we first explore the similarity between profiles of significant proteins.
+We first extract significant proteins, for each triplet, and summarize the information in one table.
+NAs (proteins not significantly differentially expressed for a given triplet, but significant in at least one other triplet) are replaced by 0, which is of no weight while computing manhattan distances.
+
+How similar are the significant sets of proteins ?
+
+Compare triplets
+------------------------------------------------
+
+We can do the comparison for all available triplets.
+
+```{r compareAll, fig.width=10, fig.height=10}
+basedir <- '/home/chernan/Workspace/testRpackage2/Prots4Prots/inst/protocols/quantitation/Label-free/outputs/'
+setwd(basedir)
+
+combined_methods.to.report <- as.matrix(expand.grid(methods.to.report))
+# method.label <- paste(combined_methods.to.report[1,c(1,3)], collapse='_')
+# dataset.label <- 'dpulex6dDMSOM4'
+
+temp.df <- apply(combined_methods.to.report, 1, FUN = function(methods) {
+    
+    method.label <- paste(c(methods["Normalization"], methods["Significance"]), 
+                          collapse='_')
+    dataset.label <- methods["Dataset"]
+    
+    prot.names <- fData(
+        dataset_list[[dataset.label]]$dataset)[, c("Majority.protein.IDs", 
+                                                   "Fasta.headers")]
+    
+    output.files <- dir(
+        paste(c(basedir, '/', threshold_pval, '/', dataset.label, '/', 
+                method.label, '/temp'), 
+              collapse=''), 
+        pattern="all_tests_mtc_Rmd_data_20.*txt", 
+        full.names=TRUE)
+    time.out.order <- order(file.info(output.files)[["mtime"]], decreasing = TRUE)
+    pvalues.data <- read.table(output.files[time.out.order[1]],
+                               stringsAsFactors=FALSE, header=TRUE,quote='"')
+    
+    temp.fc <- data.frame(fold.change=pvalues.data[["fold.change"]], 
+                          row.names=row.names(pvalues.data))
+    if(methods["Significance"]=='samr') {
+        temp.fc[(pvalues.data[["significant"]] == "STABLE"),] <- NA
+    }
+    else {
+        temp.fc[(pvalues.data[["p.values.corrected"]] > threshold_pval),] <- NA
+    }
+    return.val <- data.frame(temp.fc, prot.names[, ])
+    
+    return(return.val)
+})
+all.prot.names <- unique(unlist(lapply(temp.df,'[[',"Majority.protein.IDs")))
+all.prot.fasta <- unique(unlist(lapply(temp.df,'[[',"Fasta.headers")))
+
+signif.df <- data.frame(all.prot.names, all.prot.fasta)
+for(index.res in 1:length(temp.df)) {
+    df.res <- temp.df[[index.res]]
+    signif.df <- merge(signif.df, df.res, by.x='all.prot.names', by.y="Majority.protein.IDs", all.x=TRUE, suffixes=c('',index.res))
+}
+df.res <- signif.df[,c("all.prot.names","all.prot.fasta",names(signif.df)[grepl(x=names(signif.df),pattern="fold.change")])]
+dataset.names <- methods.to.report$Dataset
+names(df.res) <- c("Majority.protein.IDs","Fasta.headers", dataset.names)
+whichok.pg <- apply(df.res, 1, FUN=function(x){any(!is.na(x[3:8]))})
+
+significant.results <- df.res[whichok.pg,]
+significant.results[is.na(significant.results)] <- 0
+distances <- as.matrix(dist(t(significant.results[,dataset.names]), method="euclidean"))
+if(!any(is.na(distances))) {
+    plot <- display_heatmap(significant.results[,dataset.names], dist.method="euclidean", title="All combinations")
+    print(plot)
+}
+
+norm.colors <- rep("black", length(dataset.names))
+norm.colors[grepl("C1", names(significant.results[,dataset.names]))] <- "red"
+norm.colors[grepl("C2", names(significant.results[,dataset.names]))] <- "darkred"
+norm.colors[grepl("M4", names(significant.results[,dataset.names]))] <- "orange"
+
+stat.pch <- rep(0, length(dataset.names))
+stat.pch[grepl("dpulex2d", names(significant.results[,dataset.names]))] <- 8 #star
+stat.pch[grepl("dpulex7d", names(significant.results[,dataset.names]))] <- 15 #square
+
+pca.obj <- prcomp(t(significant.results[,dataset.names]))
+plot(pca.obj$x[,1], pca.obj$x[,2], col=norm.colors, pch=stat.pch, xlab="PC1", ylab="PC2")
+abline(v=0, h=0)
+
+```
