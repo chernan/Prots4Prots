@@ -70,9 +70,9 @@ sapply(
 #' @param thresholdPVal FDR threshold
 #' @return A data frame with data (p.values, fold.change, 
 #'   significant).
+#' @export
 applySummaryStatistic <- function(signMethod, 
                                   experiment, control, 
-#' @export
                                   outputFolderTemp, outputFileNameRmd, 
                                   thresholdPVal) {
     outPVal <- switch(
