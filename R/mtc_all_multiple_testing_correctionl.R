@@ -40,6 +40,7 @@ sapply(
 #' @param thresholdPVal FDR threshold
 #' @return A data frame with data in matrixData (p.values, fold.change, 
 #'   significant) and the corrected p-values.
+#' @export
 applyMultipleTestingCorrection <- function(mtcMethod, 
                                            matrixData, 
                                            outputFolderTemp, 

@@ -72,6 +72,7 @@ sapply(
 #'   significant).
 applySummaryStatistic <- function(signMethod, 
                                   experiment, control, 
+#' @export
                                   outputFolderTemp, outputFileNameRmd, 
                                   thresholdPVal) {
     outPVal <- switch(

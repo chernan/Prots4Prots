@@ -38,6 +38,7 @@ sapply(
 #' @param outputFolderTemp Where the temporary files will be created
 #' @param outputFileNameRmd Where report paragraphs will be written
 #' @return A data frame with normalized data (same format as input)
+#' @export
 applyNormalization <- function(normMethod, dataset, 
                                outputFolderTemp, outputFileNameRmd) {
     

@@ -9,9 +9,6 @@
 #' Download latticeExtra
 #' sudo R CMD INSTALL latticeExtra_0.6-24.tar.gz
 #' 
-#' @importFrom lattice levelplot
-#' @importFrom latticeExtra dendrogramGrob
-#' @import ggplot2
 # library(latticeExtra)
 # library("ggplot2")
 NULL
@@ -30,6 +27,8 @@ NULL
 #' @param distMethod One of the dist() methods to compute distances (base 
 #'  package).
 #' @param title Title for the heatmap.
+#' @importFrom lattice levelplot
+#' @importFrom latticeExtra dendrogramGrob
 displayHeatmap <- function(dataset, distMethod, title="Heatmap") {
     
     ## NB: dist computes distances between rows, so we have to transpose data 
@@ -68,7 +67,9 @@ displayHeatmap <- function(dataset, distMethod, title="Heatmap") {
 #' @param indexY Column index for Y values.
 #' @param annX Legend position on X.
 #' @param annY Legend position on Y.
-#' @param show00 Should axis be shown? 
+#' @param show00 Should axis be shown?
+#' @return The graph to be printed.
+#' @import ggplot2
 displayLinearReg <- function(dataset, 
                              indexX=1, indexY=2, 
                              annX=10, annY=19, show00=FALSE) {

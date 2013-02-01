@@ -42,6 +42,7 @@ sapply(
 #' @param outputFileNameRmd Where report paragraphs will be written
 #' @return A ExpressionSet with normalized data and additional info from raw 
 #'  ExpressionSet.
+#' @export
 applySummarization <- function(summMethod, dataset, outVal, 
                                outputFolderTemp, outputFileNameRmd) {
     pgESet <- switch(

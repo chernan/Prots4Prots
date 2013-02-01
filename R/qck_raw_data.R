@@ -24,6 +24,7 @@ NULL
 #' @param outputFile Report of current analysis step will be appended to 
 #'  this Rmd file.
 #' @param distMethod Distance method, for the heatmap.
+#' @export
 reportQualityCheckRawData <- function(dataset, outputFolderTemp, outputFile, 
                                       distMethod="euclidean") {
     

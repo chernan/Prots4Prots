@@ -18,6 +18,7 @@
 #' @param outputFileNameRmd Input Rmd file.
 #' @param outputFolder Folder where output files will be created.
 #' @return Full path of the generated HTML file.
+#' @export
 generateKnitrReport <- function(outputLabel, outputFileNameRmd, outputFolder) {
     
     outputFileNameMd <- 
